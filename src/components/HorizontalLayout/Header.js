@@ -68,26 +68,6 @@ const Header = (props) => {
       <header id="page-topbar">
         <div className="navbar-header">
           <div className="d-flex">
-            <div className="navbar-brand-box">
-              <Link to="/" className="logo logo-dark">
-                <span className="logo-sm">
-                  <img src={logo} alt="" height="22" />
-                </span>
-                <span className="logo-lg">
-                  <img src={logoDark} alt="" height="17" />
-                </span>
-              </Link>
-
-              <Link to="/" className="logo logo-light">
-                <span className="logo-sm">
-                  <img src={logoLightSvg} alt="" height="22" />
-                </span>
-                <span className="logo-lg">
-                  <img src={logoLight} alt="" height="19" />
-                </span>
-              </Link>
-            </div>
-
             <button
               type="button"
               className="btn btn-sm px-3 font-size-16 d-lg-none header-item"
@@ -99,8 +79,40 @@ const Header = (props) => {
             >
               <i className="fa fa-fw fa-bars" />
             </button>
+            <div className="navbar-brand-box">
+              <Link
+                to="/"
+                className="logo logo-dark"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {/* <span className="logo-sm">
+                  <img src="bxulogo.png" alt="" height="70" />
+                </span> */}
 
-            <form className="app-search d-none d-lg-block">
+                <span>
+                  <img src="bxulogo.png" alt="" height="70" />
+                </span>
+                <h4
+                  style={{ fontWeight: "500", fontFamily: "Libre Baskerville" }}
+                >
+                  City Building Manangement Department
+                </h4>
+              </Link>
+
+              <Link to="/" className="logo logo-light">
+                <span className="logo-sm">
+                  <img src={logoLightSvg} alt="" height="22" />
+                </span>
+                <span className="logo-lg">
+                  <img src="bxulogo.png" alt="" height="70" />
+                </span>
+              </Link>
+            </div>
+
+            {/* <form className="app-search d-none d-lg-block">
               <div className="position-relative">
                 <input
                   type="text"
@@ -109,7 +121,7 @@ const Header = (props) => {
                 />
                 <span className="bx bx-search-alt" />
               </div>
-            </form>
+            </form> */}
 
             {/* <Dropdown
               className="dropdown-mega d-none d-lg-block ms-2"

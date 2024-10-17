@@ -54,6 +54,7 @@ import FormWizard from "pages/Forms/FormWizard";
 import Login3 from "pages/AuthenticationInner/Login";
 import UiCards from "pages/Ui/UiCards";
 import HomeClient from "pages/HomeClient";
+import UiModal from "pages/Ui/UiModal";
 
 const authProtectedRoutes = [
   { path: "/dashboard", component: Analytics },
@@ -118,6 +119,7 @@ const publicRoutes = [
 ];
 const testRoutes = [
   { path: "/FormWizard1", component: FormWizard },
+  { path: "/UiModal", component: UiModal },
   { path: "/home", component: HomeClient },
 ];
 

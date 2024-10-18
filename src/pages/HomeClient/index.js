@@ -68,7 +68,6 @@ const HomeClient = () => {
             <Col className="col-12 mb-4">
               <h2 className="my-3" style={{ textAlign: "center" }}>
                 Available Services
-                <PAModal />
               </h2>
               {/* <Breadcrumbs title="test" breadcrumbItem="test2" /> */}
               <CardDeck className="card-deck-wrapper">

@@ -17,9 +17,10 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { application, checklist } from "./assets";
+import PAModal from "./PermitApplicationModal/PAModal";
 
 export default function HomeCard({ type, title, buttons }) {
-  console.log(buttons);
+  // console.log(buttons);
   return (
     <Card className="mb-4" style={{ minHeight: "20rem" }}>
       <CardImg
@@ -40,32 +41,34 @@ export default function HomeCard({ type, title, buttons }) {
             {type === "checklist" ? (
               <>
                 <Col md="12" style={{ display: "flex", gap: "5px" }}>
-                  <Link
+                  {/* <Link
                     to="#"
                     className="btn btn-primary"
                     style={{ width: "50%" }}
                   >
                     Building Permit
-                  </Link>
-
-                  <Link
+                  </Link> */}
+                  <PAModal title="Building Permit" />
+                  <PAModal title="Occupancy Permit" />
+                  {/* <Link
                     to="#"
                     className="btn btn-primary"
                     style={{ width: "50%" }}
                   >
                     Occupancy Permit
-                  </Link>
+                  </Link> */}
                 </Col>
               </>
             ) : (
               <Col md="12">
-                <Link
+                <PAModal title="Application Permit" />
+                {/* <Link
                   to="#"
                   className="btn btn-primary"
                   style={{ width: "100%", margin: "5px 0px" }}
                 >
                   Permit Application
-                </Link>
+                </Link> */}
               </Col>
             )}
           </Row>

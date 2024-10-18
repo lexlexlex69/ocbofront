@@ -2,7 +2,7 @@ import { Modal } from "reactstrap";
 import React, { useState } from "react";
 import PermitApplicationModalContent from "./PermitApplicationModalContent";
 
-export default function PAModal() {
+export default function PAModal({ title }) {
   const [modal_backdrop, setmodal_backdrop] = useState(false);
 
   function tog_backdrop() {
@@ -23,8 +23,9 @@ export default function PAModal() {
         }}
         data-toggle="modal"
         data-target=".bs-example-modal-lg"
+        style={{ width: "100%" }}
       >
-        Static backdrop modal
+        {title}
       </button>
       <Modal
         isOpen={modal_backdrop}
@@ -49,21 +50,9 @@ export default function PAModal() {
           ></button>
         </div>
         <div className="modal-body">
-          <PermitApplicationModalContent />
-        </div>
-        <div className="modal-footer">
-          <button
-            type="button"
-            className="btn btn-light"
-            onClick={() => {
-              setmodal_backdrop(false);
-            }}
-          >
-            Cancel
-          </button>
-          <button type="button" className="btn btn-primary">
-            Proceed
-          </button>
+          <PermitApplicationModalContent
+            setmodal_backdrop={setmodal_backdrop}
+          />
         </div>
       </Modal>
     </>

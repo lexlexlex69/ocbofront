@@ -8,13 +8,52 @@ import {
   methodAcquisitionFD,
   ownershipFD,
 } from "pages/HomeClient/FakeValues/fakedata";
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import CustomSelect from "pages/HomeClient/Components/CustomSelect";
 import CustomInput from "pages/HomeClient/Components/CustomInput";
+import CustomCheckbox from "pages/HomeClient/Components/CustomCheckbox";
 
 const style = { backgroundColor: "#55a5e6", color: "white" };
 
 export default function PermitApplicationModalContent({ setmodal_backdrop }) {
+  ///////////////////////////
+  const [filterParams, setFilterParams] = useState([]);
+
+  const handleInputChange = (e) => {
+    let exists = filterParams.find((filter) => filter === e.target.value);
+    if (exists) {
+      const updatedFilters = filterParams.filter(
+        (filter) => filter !== e.target.value
+      );
+      setFilterParams(updatedFilters);
+    } else {
+      setFilterParams([...filterParams.params, e.target.value]);
+    }
+  };
+
+  const filterCheckboxs = [
+    {
+      id: "check1",
+      label: "Hot deal",
+      value: "special_deals",
+    },
+    {
+      id: "check2",
+      label: "Special offer",
+      value: "special_offer",
+    },
+    {
+      id: "check3",
+      label: "New",
+      value: "new",
+    },
+    {
+      id: "check4",
+      label: "Best seller",
+      value: "featured",
+    },
+  ];
+  ///////////////////
   const [ownershipOptions, setOwnershipOptions] = useState("");
   const [methodAcquisitionOptions, setMethodAcquisitionOptions] = useState("");
   const [formOwnershipOptions, setFormOwnershipOptions] = useState("");
@@ -88,13 +127,51 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
           taxDecNo: "",
           disctrict: "",
           city: "",
+          workScopeCheckist: [],
         }}
-        validationSchema={schema}
+        // validationSchema={schema}
         onSubmit={onSubmit}
       >
-        {({ isSubmitting, values }) => (
+        {({ isSubmitting, values, setFieldValue }) => (
           <Form>
+            <button
+              type="button"
+              onClick={() => {
+                const newObject = { value: 1, data: "asdfsadf" };
+                setFieldValue("workScopeCheckist", [
+                  ...values.workScopeCheckist,
+                  newObject,
+                ]);
+              }}
+            >
+              Add to Checklist
+            </button>
+
+            <Field name="workScopeCheckist" type="hidden" />
+            <pre>{JSON.stringify(values, null, 2)}</pre>
+
             {/* <h2>Building Permit Application</h2> */}
+            <ul className="list-group">
+              {filterCheckboxs.map((filter) => (
+                <li key={filter.id} className="list-group-item">
+                  <div className="form-check flex-grow-1">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      value={filter.value}
+                      onChange={(e) => handleInputChange(e)}
+                      id={filter.id}
+                      checked={filterParams?.params?.find(
+                        (item) => item === filter.value
+                      )}
+                    />
+                    <label className="form-check-label" htmlFor={filter.id}>
+                      {filter.label}
+                    </label>
+                  </div>
+                </li>
+              ))}
+            </ul>
             <Row>
               <Col lg={12}>
                 <Card
@@ -326,21 +403,19 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
                               </Row>
                               <Row style={{ padding: "0px 20px" }}>
                                 <Col md="4">
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck1"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
+                                  <CustomCheckbox
+                                    stateData={values.workScopeCheckist}
+                                    name="workScopeCheckista1"
+                                  />
+                                  <CustomCheckbox
+                                    stateData={values.workScopeCheckist}
+                                    name="workScopeCheckista2"
+                                  />
+                                  <CustomCheckbox
+                                    stateData={values.workScopeCheckist}
+                                    name="workScopeCheckista3"
+                                  />
+
                                   <div className="form-check form-check-end mb-3">
                                     <input
                                       className="form-check-input"

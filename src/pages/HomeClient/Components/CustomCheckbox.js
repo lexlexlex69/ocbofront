@@ -1,12 +1,12 @@
-import { useField, useFormikContext } from "formik";
-import React from "react";
-import { Input, Label } from "reactstrap";
+import { useField, useFormikContext } from "formik"
+import React from "react"
+import { Input, Label } from "reactstrap"
 
 const CustomCheckbox = ({ label, ...props }) => {
-  const { setFieldValue } = useFormikContext(); // Access Formik's context
-  const [field, meta] = useField({ ...props, type: "checkbox" });
+  const { setFieldValue } = useFormikContext() // Access Formik's context
+  const [field, meta] = useField({ ...props, type: "checkbox" })
   // console.log(field.)
-  console.log(props);
+  // console.log(props);
 
   const handleChange = () => {
     // console.log("clicked");
@@ -14,8 +14,8 @@ const CustomCheckbox = ({ label, ...props }) => {
     setFieldValue("workScopeCheckist", [
       ...props.stateData, // Spread the current array
       { value: 1, data: props.name }, // Add the new object
-    ]);
-  };
+    ])
+  }
 
   return (
     <>
@@ -35,7 +35,7 @@ const CustomCheckbox = ({ label, ...props }) => {
 
       {meta.touched && meta.error && <div className="error">{meta.error}</div>}
     </>
-  );
-};
+  )
+}
 
-export default CustomCheckbox;
+export default CustomCheckbox

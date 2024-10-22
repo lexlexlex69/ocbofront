@@ -2,7 +2,7 @@ const ownershipFD = [
   { id: 1, label: "I am the owner" },
   { id: 2, label: "I am the co-owner" },
   { id: 3, label: "I am not the owner" },
-];
+]
 
 const methodAcquisitionFD = [
   { id: 1, label: "I bought the lot/property" },
@@ -10,14 +10,14 @@ const methodAcquisitionFD = [
   { id: 3, label: "I am the co-heir of the registered owner" },
   { id: 4, label: "I am the tenant/lessee of the property" },
   { id: 5, label: "I am the awardee of this property" },
-];
+]
 
 const formOwnership = [
   { id: 1, label: "Individual" },
   { id: 2, label: "Partnership" },
   { id: 3, label: "Corporation" },
   { id: 4, label: "Government" },
-];
+]
 
 const workScopeCheckistFD = [
   { id: 1, label: "New Construction" },
@@ -35,7 +35,7 @@ const workScopeCheckistFD = [
   { id: 13, label: "Accessory building structure" },
   { id: 14, label: "Alteration" },
   { id: 15, label: "As-Built" },
-];
+]
 
 const followUpQuestionsFD = [
   { id: 1, label: "Without any electrical installation or alteration" },
@@ -70,7 +70,7 @@ const followUpQuestionsFD = [
   { id: 11, label: "Application is for indigenous permit " },
   { id: 12, label: "A fence will be constructed along with the building" },
   { id: 13, label: "The structure is less than 3-storey" },
-];
+]
 
 const buildingPermitAppicationQuestions = [
   {
@@ -87,66 +87,78 @@ const buildingPermitAppicationQuestions = [
       {
         row: 2,
         colmd: 12,
+        dependentOn: "ownershipStatus",
+        dependentOnName: "id",
+        dependeonValue: 3,
         label: "Method of lot/property acquisition",
         name: "methodAcquisition",
         inputType: "select",
         options: "methodAcquisitionOptions",
       },
-    ],
-  },
-  {
-    header: "PROJECT LOCATION",
-    field: [
       {
-        row: 1,
-        colmd: 6,
-        label: "Project Title",
-        name: "projectTitle",
-        inputType: "text",
-      },
-      {
-        row: 1,
-        colmd: 3,
-        label: "Lot No",
-        name: "lotNo",
-        inputType: "text",
-      },
-      {
-        row: 1,
-        colmd: 3,
-        label: "Blk No",
-        name: "blkNo",
-        inputType: "text",
-      },
-      {
-        row: 2,
-        colmd: 6,
-        label: "Tct No",
-        name: "tctNo",
-        inputType: "text",
-      },
-      {
-        row: 2,
-        colmd: 3,
-        label: "Street",
-        name: "street",
-        inputType: "text",
-      },
-      {
-        row: 2,
-        colmd: 3,
-        label: "Barangay",
-        name: "barangay",
+        row: 3,
+        colmd: 12,
+        label: "Form of Ownership",
+        name: "formOwnership",
         inputType: "select",
-        options: "barangayOptions",
+        options: "formOwnershipOptions",
       },
     ],
   },
-];
+  // {
+  //   header: "PROJECT LOCATION",
+  //   field: [
+  //     {
+  //       row: 1,
+  //       colmd: 6,
+  //       label: "Project Title",
+  //       name: "projectTitle",
+  //       inputType: "text",
+  //     },
+  //     {
+  //       row: 1,
+  //       colmd: 3,
+  //       label: "Lot No",
+  //       name: "lotNo",
+  //       inputType: "text",
+  //     },
+  //     {
+  //       row: 1,
+  //       colmd: 3,
+  //       label: "Blk No",
+  //       name: "blkNo",
+  //       inputType: "text",
+  //     },
+  //     {
+  //       row: 2,
+  //       colmd: 6,
+  //       label: "Tct No",
+  //       name: "tctNo",
+  //       inputType: "text",
+  //     },
+  //     {
+  //       row: 2,
+  //       colmd: 3,
+  //       label: "Street",
+  //       name: "street",
+  //       inputType: "text",
+  //     },
+  //     {
+  //       row: 2,
+  //       colmd: 3,
+  //       label: "Barangay",
+  //       name: "barangay",
+  //       inputType: "select",
+  //       options: "barangayOptions",
+  //     },
+  //   ],
+  // },
+]
 export {
   ownershipFD,
   methodAcquisitionFD,
   formOwnership,
   workScopeCheckistFD,
   followUpQuestionsFD,
-};
+  buildingPermitAppicationQuestions,
+}

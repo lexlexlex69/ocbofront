@@ -1,79 +1,58 @@
-import React, { useEffect, useState } from "react";
-import { Col, Row, Card, CardBody, CardText, Label, Input } from "reactstrap";
-import { Link } from "react-router-dom";
-import Select, { StylesConfig } from "react-select";
-import * as yup from "yup";
+import React, { useEffect, useState } from "react"
+import { Col, Row, Card, CardBody, CardText, Label, Input } from "reactstrap"
+import { Link } from "react-router-dom"
+import Select, { StylesConfig } from "react-select"
+import * as yup from "yup"
 import {
+  buildingPermitAppicationQuestions,
   followUpQuestionsFD,
   formOwnership,
   methodAcquisitionFD,
   ownershipFD,
   workScopeCheckistFD,
-} from "pages/HomeClient/FakeValues/fakedata";
-import { Field, Form, Formik } from "formik";
-import CustomSelect from "pages/HomeClient/Components/CustomSelect";
-import CustomInput from "pages/HomeClient/Components/CustomInput";
-import CustomCheckbox from "pages/HomeClient/Components/CustomCheckbox";
+} from "pages/HomeClient/FakeValues/fakedata"
+import { Field, Form, Formik } from "formik"
+import CustomSelect from "pages/HomeClient/Components/CustomSelect"
+import CustomInput from "pages/HomeClient/Components/CustomInput"
+import CustomCheckbox from "pages/HomeClient/Components/CustomCheckbox"
 
-const style = { backgroundColor: "#55a5e6", color: "white" };
+const style = { backgroundColor: "#55a5e6", color: "white" }
 
 export default function PermitApplicationModalContent({ setmodal_backdrop }) {
-  ///////////////////////////
-  const [filterParams, setFilterParams] = useState([]);
-
-  const handleInputChange = (e) => {
-    let exists = filterParams.find((filter) => filter === e.target.value);
-    if (exists) {
-      const updatedFilters = filterParams.filter(
-        (filter) => filter !== e.target.value
-      );
-      setFilterParams(updatedFilters);
-    } else {
-      setFilterParams([...filterParams.params, e.target.value]);
-    }
-  };
-
-  ///////////////////
-  const [ownershipOptions, setOwnershipOptions] = useState("");
-  const [methodAcquisitionOptions, setMethodAcquisitionOptions] = useState("");
-  const [formOwnershipOptions, setFormOwnershipOptions] = useState("");
-  const [workScopeChecklistOptions, setWorkScopeChecklistOptions] = useState(
-    []
-  );
-  const [followUpQuestionsOptions, setFollowUpQuestionsOptions] = useState([]);
-
-  function extractLabels(data) {
-    return data.map((item) => item.label);
-  }
+  const [ownershipOptions, setOwnershipOptions] = useState("")
+  const [methodAcquisitionOptions, setMethodAcquisitionOptions] = useState("")
+  const [formOwnershipOptions, setFormOwnershipOptions] = useState("")
+  const [selectOptions, setSelectOptions] = useState({
+    ownershipOptions: [],
+    methodAcquisitionOptions: [],
+    formOwnershipOptions: [],
+  })
+  // const [workScopeChecklistOptions, setWorkScopeChecklistOptions] = useState([])
+  // const [followUpQuestionsOptions, setFollowUpQuestionsOptions] = useState([])
 
   const onSubmit = async (values, actions) => {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
     // console.log(values[methodAcquisition]);
-    if (values.ownershipStatus !== 3)
-      values = { ...values, methodAcquisition: 0 };
-    console.log(values);
+    if (values.ownershipStatus.id !== 3)
+      values = { ...values, methodAcquisition: 0 }
+    console.log(values)
     // setmodal_backdrop(false);
     // actions.resetForm();
-  };
-
+  }
+  console.log(buildingPermitAppicationQuestions)
   useEffect(() => {
-    const ownershipFDFetch = ownershipFD;
-    setOwnershipOptions(ownershipFDFetch);
+    const ownershipFDFetch = ownershipFD
+    const methodAcquisitionFDFetch = methodAcquisitionFD
+    const formOwnershipFetch = formOwnership
+    setSelectOptions({
+      ...selectOptions,
+      ownershipOptions: ownershipFDFetch,
+      methodAcquisitionOptions: methodAcquisitionFDFetch,
+      formOwnershipOptions: formOwnershipFetch,
+    })
 
-    const methodAcquisitionFDFetch = methodAcquisitionFD;
-    setMethodAcquisitionOptions(methodAcquisitionFDFetch);
-
-    const formOwnershipFDFetch = formOwnership;
-    setFormOwnershipOptions(formOwnershipFDFetch);
-
-    const workScopeChecklistFDFetch = workScopeCheckistFD;
-    setWorkScopeChecklistOptions(workScopeChecklistFDFetch);
-
-    const followUpQuestionsFDFetch = followUpQuestionsFD;
-    setFollowUpQuestionsOptions(followUpQuestionsFDFetch);
-
-    // console.log(workScopeChecklistOptions);
-  }, []);
+    // console.log(selectOptions)
+  }, [])
 
   const schema = yup.object().shape({
     ownershipStatus: yup
@@ -102,7 +81,7 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
     // acceptedTos: yup
     //   .boolean()
     //   .oneOf([true], "Please accept the terms of service"),
-  });
+  })
 
   return (
     <>
@@ -131,299 +110,82 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
             {/* <TestCustomCheckbox id="check2" type="checkbox" data={values} /> */}
 
             {/* <h2>Building Permit Application</h2> */}
+            {buildingPermitAppicationQuestions.map((card) => (
+              <>
+                <Row>
+                  <Col lg={12}>
+                    <Card
+                      style={{
+                        border: "2px solid rgba(0, 0, 0, 0.05)",
+                        boxShadow: "none",
+                      }}
+                    >
+                      <p
+                        className="card-header  border-bottom text-uppercase"
+                        style={style}
+                      >
+                        {card.header}
+                      </p>
+                      <CardBody>
+                        {/* <CardTitle className="mt-0">Special title treatment</CardTitle> */}
+                        <CardText>
+                          {card.field.map((field) => {
+                            if (field.dependentOn)
+                              return (
+                                <>
+                                  {values[field.dependentOn][
+                                    field.dependentOnName
+                                  ] === field.dependeonValue && (
+                                    <Row className="mb-3">
+                                      <CustomSelect
+                                        label={field.label}
+                                        name={field.name}
+                                        options={selectOptions[field.options]}
+                                      />
+                                    </Row>
+                                  )}
+                                </>
+                              )
+                            else {
+                              return (
+                                <>
+                                  <Row className="mb-3">
+                                    <CustomSelect
+                                      label={field.label}
+                                      name={field.name}
+                                      options={selectOptions[field.options]}
+                                    />
+                                  </Row>
+                                </>
+                              )
+                            }
+                          })}
 
-            <Row>
-              <Col lg={12}>
-                <Card
-                  style={{
-                    border: "2px solid rgba(0, 0, 0, 0.05)",
-                    boxShadow: "none",
-                  }}
-                >
-                  <p
-                    className="card-header  border-bottom text-uppercase"
-                    style={style}
-                  >
-                    Land Ownership
-                  </p>
-                  <CardBody>
-                    {/* <CardTitle className="mt-0">Special title treatment</CardTitle> */}
-                    <CardText>
-                      <Row className="mb-3">
-                        <CustomSelect
-                          label="Ownership Status"
-                          name="ownershipStatus"
-                          options={ownershipOptions}
-                        />
-                      </Row>
-                      {values.ownershipStatus === 3 && (
-                        <Row className="mb-3">
-                          <CustomSelect
-                            label="Method of lot/property acquisition"
-                            name="methodAcquisition"
-                            options={methodAcquisitionOptions}
-                          />
-                        </Row>
-                      )}
-
-                      <Row className="mb-3">
-                        <CustomSelect
-                          label="Form of Ownership"
-                          name="formOwnership"
-                          options={formOwnershipOptions}
-                        />
-                      </Row>
-                    </CardText>
-                  </CardBody>
-                </Card>
-                <Card
-                  style={{
-                    border: "2px solid rgba(0, 0, 0, 0.05)",
-                    boxShadow: "none",
-                  }}
-                >
-                  <h5
-                    className="card-header  border-bottom text-uppercase"
-                    style={style}
-                  >
-                    Project Location
-                  </h5>
-                  <CardBody>
-                    {/* <CardTitle className="mt-0">Special title treatment</CardTitle> */}
-                    <CardText>
-                      <Row className="mb-3">
-                        <Col md="6">
-                          <CustomInput
-                            label="Project Title"
-                            name="projectTitle"
-                            type="text"
-                          />
-                        </Col>
-                        <Col md="3">
-                          <CustomInput
-                            label="Lot No"
-                            name="lotNo"
-                            type="text"
-                          />
-                        </Col>
-                        <Col md="3">
-                          <CustomInput
-                            label="Blk No"
-                            name="blkNo"
-                            type="text"
-                          />
-                        </Col>
-                      </Row>
-                      <Row className="mb-3">
-                        <Col md="6">
-                          <CustomInput
-                            label="Tct No"
-                            name="tctNo"
-                            type="text"
-                          />
-                        </Col>
-                        <Col md="3">
-                          <CustomInput
-                            label="Street"
-                            name="street"
-                            type="text"
-                          />
-                        </Col>
-                        <Col md="3">
-                          <CustomInput
-                            label="Barangay"
-                            name="barangay"
-                            type="text"
-                          />
-                        </Col>
-                      </Row>
-                      <Row className="mb-3">
-                        <Col md="6">
-                          <CustomInput
-                            label="Tax dec No"
-                            name="taxDecNo"
-                            type="text"
-                          />
-                        </Col>
-                        <Col md="3">
-                          <CustomInput
-                            label="Disctrict"
-                            name="disctrict"
-                            type="text"
-                          />
-                        </Col>
-                        <Col md="3">
-                          <CustomInput label="City" name="city" type="text" />
-                        </Col>
-                      </Row>
-                    </CardText>
-                  </CardBody>
-                </Card>
-                <Card
-                  style={{
-                    border: "2px solid rgba(0, 0, 0, 0.05)",
-                    boxShadow: "none",
-                  }}
-                >
-                  <h5
-                    className="card-header  border-bottom text-uppercase"
-                    style={style}
-                  >
-                    Applicant
-                  </h5>
-                  <CardBody>
-                    {/* <CardTitle className="mt-0">Special title treatment</CardTitle> */}
-                    <CardText>
-                      <Row className="mb-3">
-                        <Col md="5">
-                          <Label>Project Title:</Label>
-                          <Input name="business_code" type="text" />
-                        </Col>
-                        <Col md="5">
-                          <Label>Lot No:</Label>
-                          <Input name="business_code" type="text" />
-                        </Col>
-                        <Col md="1">
-                          <Label>Blk No:</Label>
-                          <Input name="business_code" type="text" />
-                        </Col>
-                        <Col md="1">
-                          <Label>Blk No:</Label>
-                          <Input name="business_code" type="text" />
-                        </Col>
-                      </Row>
-                      <Row className="mb-3">
-                        <Col md="12">
-                          <Label>Address:</Label>
-                          <Row>
-                            <Col md="3">
-                              <Input name="business_code" type="text" />
-                            </Col>
-                            <Col md="2">
-                              <Input name="business_code" type="text" />
-                            </Col>
-                            <Col md="3">
-                              <Select
-                                isClearable="true"
-                                name=""
-                                classNamePrefix="select2-selection"
+                          {/* {values.ownershipStatus.id === 3 && (
+                            <Row className="mb-3">
+                              <CustomSelect
+                                label="Method of lot/property acquisition"
+                                name="methodAcquisition"
+                                options={
+                                  selectOptions["methodAcquisitionOptions"]
+                                }
                               />
-                            </Col>
-                            <Col md="2">
-                              <Input name="business_code" type="text" />
-                            </Col>
-                            <Col md="2">
-                              <Input name="business_code" type="text" />
-                            </Col>
-                          </Row>
-                        </Col>
-                      </Row>
-                      <Row className="mb-3">
-                        <Col md="5">
-                          <Label>Tel No:</Label>
-                          <Input name="business_code" type="text" />
-                        </Col>
-                      </Row>
-                    </CardText>
-                  </CardBody>
-                </Card>
-                <Card
-                  style={{
-                    border: "2px solid rgba(0, 0, 0, 0.05)",
-                    boxShadow: "none",
-                  }}
-                >
-                  <h5
-                    className="card-header  border-bottom text-uppercase"
-                    style={style}
-                  >
-                    Additional Information
-                  </h5>
-                  <CardBody>
-                    {/* <CardTitle className="mt-0">Special title treatment</CardTitle> */}
-                    <CardText>
-                      <Row className="mb-3">
-                        <Label>Ownership Status:</Label>
-                        <Select
-                          isClearable="true"
-                          name=""
-                          classNamePrefix="select2-selection"
-                        />
-                      </Row>
+                            </Row>
+                          )} */}
+                        </CardText>
+                      </CardBody>
+                    </Card>
+                  </Col>
+                </Row>
+              </>
+            ))}
 
-                      <Row className="mb-3">
-                        <div>
-                          <Col md="12">
-                            <div className="mt-4">
-                              <Row>
-                                <h2 className="font-size-18 mb-4">
-                                  <i className="mdi mdi-arrow-right text-primary mr-1"></i>{" "}
-                                  Scope of Work
-                                </h2>
-                              </Row>
-                              <Row style={{ padding: "0px 20px" }}>
-                                {workScopeChecklistOptions.map((wsc) => (
-                                  <CustomCheckbox
-                                    purpose="workScope"
-                                    key={wsc.id}
-                                    id={wsc.id}
-                                    name={wsc.id}
-                                    label={wsc.label}
-                                    type="checkbox"
-                                    data={values.workScopeChecklist}
-                                  />
-                                ))}
-                              </Row>
-                            </div>
-                          </Col>
-                        </div>
-                      </Row>
-                      <Row className="mb-3">
-                        <Label>Form of Ownership:</Label>
-                        <Select
-                          isClearable="true"
-                          name=""
-                          classNamePrefix="select2-selection"
-                        />
-                      </Row>
-                      <Row className="mb-3">
-                        <div>
-                          <Col md="12">
-                            <div className="mt-4">
-                              <Row>
-                                <h2 className="font-size-18 mb-4">
-                                  <i className="mdi mdi-arrow-right text-primary mr-1"></i>{" "}
-                                  Follow-up Questions
-                                </h2>
-                              </Row>
-                              <Row style={{ padding: "0px 20px" }}>
-                                {followUpQuestionsOptions.map((wsc) => (
-                                  <CustomCheckbox
-                                    purpose="followUp"
-                                    key={wsc.id}
-                                    id={wsc.id}
-                                    name={wsc.id}
-                                    label={wsc.label}
-                                    type="checkbox"
-                                    data={values.followUpChecklist}
-                                  />
-                                ))}
-                              </Row>
-                            </div>
-                          </Col>
-                        </div>
-                      </Row>
-                    </CardText>
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
             <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-light"
                 onClick={() => {
-                  setmodal_backdrop(false);
+                  setmodal_backdrop(false)
                 }}
               >
                 Cancel
@@ -436,5 +198,5 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
         )}
       </Formik>
     </>
-  );
+  )
 }

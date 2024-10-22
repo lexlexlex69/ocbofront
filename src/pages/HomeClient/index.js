@@ -66,9 +66,9 @@ const HomeClient = () => {
         <Container fluid={true}>
           <Row>
             <Col className="col-12 mb-4">
-              <h2 className="my-3" style={{ textAlign: "center" }}>
+              <p className="my-3" style={{ textAlign: "center" }}>
                 Available Services
-              </h2>
+              </p>
               {/* <Breadcrumbs title="test" breadcrumbItem="test2" /> */}
               <CardDeck className="card-deck-wrapper">
                 <div className="card-group" style={{ gap: "10px" }}>
@@ -80,9 +80,9 @@ const HomeClient = () => {
           </Row>
           <Row>
             <Col className="col-12 mb-4">
-              <h2 className="my-3" style={{ textAlign: "center" }}>
+              <p className="my-3" style={{ textAlign: "center" }}>
                 Available Services
-              </h2>
+              </p>
               {/* <Breadcrumbs title="test" breadcrumbItem="test2" /> */}
               <CardDeck className="card-deck-wrapper">
                 <div className="card-group" style={{ gap: "10px" }}>

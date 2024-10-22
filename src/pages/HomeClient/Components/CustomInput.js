@@ -18,14 +18,14 @@ const CustomInput = ({ label, ...props }) => {
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Label>{label}</Label>{" "}
         {meta.touched && meta.error && (
-          <p style={{ marginBottom: "0", color: "#f46a6a" }}>*{meta.error}</p>
+          <p style={{ marginBottom: "0", color: "#f46a6a" }}>{meta.error}</p>
         )}
       </div>
       <Input
         {...field}
         {...props}
         placeholder={`Please enter a ${label}`}
-        className={meta.touched && meta.error && "border-danger"}
+        className={meta.touched && meta.error ? "border-danger" : ""}
       />
     </>
   );

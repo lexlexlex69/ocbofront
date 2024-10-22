@@ -1,87 +1,79 @@
-import React, { useEffect, useState } from "react"
-import { Col, Row, Card, CardBody, CardText, Label, Input } from "reactstrap"
-import { Link } from "react-router-dom"
-import Select, { StylesConfig } from "react-select"
-import * as yup from "yup"
+import React, { useEffect, useState } from "react";
+import { Col, Row, Card, CardBody, CardText, Label, Input } from "reactstrap";
+import { Link } from "react-router-dom";
+import Select, { StylesConfig } from "react-select";
+import * as yup from "yup";
 import {
+  followUpQuestionsFD,
   formOwnership,
   methodAcquisitionFD,
   ownershipFD,
-} from "pages/HomeClient/FakeValues/fakedata"
-import { Field, Form, Formik } from "formik"
-import CustomSelect from "pages/HomeClient/Components/CustomSelect"
-import CustomInput from "pages/HomeClient/Components/CustomInput"
-import CustomCheckbox from "pages/HomeClient/Components/CustomCheckbox"
+  workScopeCheckistFD,
+} from "pages/HomeClient/FakeValues/fakedata";
+import { Field, Form, Formik } from "formik";
+import CustomSelect from "pages/HomeClient/Components/CustomSelect";
+import CustomInput from "pages/HomeClient/Components/CustomInput";
+import CustomCheckbox from "pages/HomeClient/Components/CustomCheckbox";
 
-const style = { backgroundColor: "#55a5e6", color: "white" }
+const style = { backgroundColor: "#55a5e6", color: "white" };
 
 export default function PermitApplicationModalContent({ setmodal_backdrop }) {
   ///////////////////////////
-  const [filterParams, setFilterParams] = useState([])
+  const [filterParams, setFilterParams] = useState([]);
 
   const handleInputChange = (e) => {
-    let exists = filterParams.find((filter) => filter === e.target.value)
+    let exists = filterParams.find((filter) => filter === e.target.value);
     if (exists) {
       const updatedFilters = filterParams.filter(
         (filter) => filter !== e.target.value
-      )
-      setFilterParams(updatedFilters)
+      );
+      setFilterParams(updatedFilters);
     } else {
-      setFilterParams([...filterParams.params, e.target.value])
+      setFilterParams([...filterParams.params, e.target.value]);
     }
-  }
+  };
 
-  const filterCheckboxs = [
-    {
-      id: "check1",
-      label: "Hot deal",
-      value: "special_deals",
-    },
-    {
-      id: "check2",
-      label: "Special offer",
-      value: "special_offer",
-    },
-    {
-      id: "check3",
-      label: "New",
-      value: "new",
-    },
-    {
-      id: "check4",
-      label: "Best seller",
-      value: "featured",
-    },
-  ]
   ///////////////////
-  const [ownershipOptions, setOwnershipOptions] = useState("")
-  const [methodAcquisitionOptions, setMethodAcquisitionOptions] = useState("")
-  const [formOwnershipOptions, setFormOwnershipOptions] = useState("")
+  const [ownershipOptions, setOwnershipOptions] = useState("");
+  const [methodAcquisitionOptions, setMethodAcquisitionOptions] = useState("");
+  const [formOwnershipOptions, setFormOwnershipOptions] = useState("");
+  const [workScopeChecklistOptions, setWorkScopeChecklistOptions] = useState(
+    []
+  );
+  const [followUpQuestionsOptions, setFollowUpQuestionsOptions] = useState([]);
 
   function extractLabels(data) {
-    return data.map((item) => item.label)
+    return data.map((item) => item.label);
   }
 
   const onSubmit = async (values, actions) => {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
     // console.log(values[methodAcquisition]);
     if (values.ownershipStatus !== 3)
-      values = { ...values, methodAcquisition: 0 }
-    console.log(values)
+      values = { ...values, methodAcquisition: 0 };
+    console.log(values);
     // setmodal_backdrop(false);
     // actions.resetForm();
-  }
+  };
 
   useEffect(() => {
-    const ownershipFDFetch = ownershipFD
-    setOwnershipOptions(ownershipFDFetch)
+    const ownershipFDFetch = ownershipFD;
+    setOwnershipOptions(ownershipFDFetch);
 
-    const methodAcquisitionFDFetch = methodAcquisitionFD
-    setMethodAcquisitionOptions(methodAcquisitionFDFetch)
+    const methodAcquisitionFDFetch = methodAcquisitionFD;
+    setMethodAcquisitionOptions(methodAcquisitionFDFetch);
 
-    const formOwnershipFDFetch = formOwnership
-    setFormOwnershipOptions(formOwnershipFDFetch)
-  }, [])
+    const formOwnershipFDFetch = formOwnership;
+    setFormOwnershipOptions(formOwnershipFDFetch);
+
+    const workScopeChecklistFDFetch = workScopeCheckistFD;
+    setWorkScopeChecklistOptions(workScopeChecklistFDFetch);
+
+    const followUpQuestionsFDFetch = followUpQuestionsFD;
+    setFollowUpQuestionsOptions(followUpQuestionsFDFetch);
+
+    // console.log(workScopeChecklistOptions);
+  }, []);
 
   const schema = yup.object().shape({
     ownershipStatus: yup
@@ -110,7 +102,8 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
     // acceptedTos: yup
     //   .boolean()
     //   .oneOf([true], "Please accept the terms of service"),
-  })
+  });
+
   return (
     <>
       <Formik
@@ -127,93 +120,18 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
           taxDecNo: "",
           disctrict: "",
           city: "",
-          workScopeCheckist: [],
+          workScopeChecklist: [],
+          followUpChecklist: [],
         }}
         // validationSchema={schema}
         onSubmit={onSubmit}
       >
         {({ isSubmitting, values, setFieldValue }) => (
           <Form>
-            <input
-              id="check1"
-              type="checkbox"
-              onClick={() => {
-                const newObject = { value: 3, data: "qweqwe" }
-                const index = values.workScopeCheckist.findIndex(
-                  (item) => item.value === newObject.value
-                )
-                console.log(index)
-
-                if (index !== -1) {
-                  values.workScopeCheckist.splice(index, 1)
-                } else {
-                  setFieldValue("workScopeCheckist", [
-                    ...values.workScopeCheckist,
-                    newObject,
-                  ])
-                }
-              }}
-            />
-            <label htmlFor="check1">check1</label>
-            <button
-              type="button"
-              onClick={() => {
-                const newObject = { value: 1, data: "asdfsadf" }
-                setFieldValue("workScopeCheckist", [
-                  ...values.workScopeCheckist,
-                  newObject,
-                ])
-              }}
-            >
-              Add to Checklist
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                const newObject = { value: 2, data: "zxczxcxz" }
-                const index = values.workScopeCheckist.findIndex(
-                  (item) => item.value === 2
-                )
-                console.log(index)
-
-                if (index !== -1) {
-                  values.workScopeCheckist.splice(index, 1)
-                } else {
-                  setFieldValue("workScopeCheckist", [
-                    ...values.workScopeCheckist,
-                    newObject,
-                  ])
-                }
-              }}
-            >
-              Add to Checklist
-            </button>
-
-            <Field name="workScopeCheckist" type="hidden" />
-            <pre>{JSON.stringify(values, null, 2)}</pre>
+            {/* <TestCustomCheckbox id="check2" type="checkbox" data={values} /> */}
 
             {/* <h2>Building Permit Application</h2> */}
-            <ul className="list-group">
-              {filterCheckboxs.map((filter) => (
-                <li key={filter.id} className="list-group-item">
-                  <div className="form-check flex-grow-1">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value={filter.value}
-                      onChange={(e) => handleInputChange(e)}
-                      id={filter.id}
-                      checked={filterParams?.params?.find(
-                        (item) => item === filter.value
-                      )}
-                    />
-                    <label className="form-check-label" htmlFor={filter.id}>
-                      {filter.label}
-                    </label>
-                  </div>
-                </li>
-              ))}
-            </ul>
+
             <Row>
               <Col lg={12}>
                 <Card
@@ -444,235 +362,17 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
                                 </h2>
                               </Row>
                               <Row style={{ padding: "0px 20px" }}>
-                                <Col md="4">
+                                {workScopeChecklistOptions.map((wsc) => (
                                   <CustomCheckbox
-                                    stateData={values.workScopeCheckist}
-                                    name="workScopeCheckista1"
+                                    purpose="workScope"
+                                    key={wsc.id}
+                                    id={wsc.id}
+                                    name={wsc.id}
+                                    label={wsc.label}
+                                    type="checkbox"
+                                    data={values.workScopeChecklist}
                                   />
-                                  <CustomCheckbox
-                                    stateData={values.workScopeCheckist}
-                                    name="workScopeCheckista2"
-                                  />
-                                  <CustomCheckbox
-                                    stateData={values.workScopeCheckist}
-                                    name="workScopeCheckista3"
-                                  />
-
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck3"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck4"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck5"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                </Col>
-                                <Col md="4">
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                </Col>
-                                <Col md="4">
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Form Checkbox
-                                    </label>
-                                  </div>
-                                </Col>
+                                ))}
                               </Row>
                             </div>
                           </Col>
@@ -697,170 +397,17 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
                                 </h2>
                               </Row>
                               <Row style={{ padding: "0px 20px" }}>
-                                <Col md="6">
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Without any split type ACU and other
-                                      mechanical installation or alteration
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Without any split type ACU and other
-                                      mechanical installation or alteration
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Without any split type ACU and other
-                                      mechanical installation or alteration
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Without any split type ACU and other
-                                      mechanical installation or alteration
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Without any split type ACU and other
-                                      mechanical installation or alteration
-                                    </label>
-                                  </div>
-                                </Col>
-                                <Col md="6">
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Without any split type ACU and other
-                                      mechanical installation or alteration
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Without any split type ACU and other
-                                      mechanical installation or alteration
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Without any split type ACU and other
-                                      mechanical installation or alteration
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Without any split type ACU and other
-                                      mechanical installation or alteration
-                                    </label>
-                                  </div>
-                                  <div className="form-check form-check-end mb-3">
-                                    <input
-                                      className="form-check-input"
-                                      type="checkbox"
-                                      value=""
-                                      id="defaultCheck2"
-                                      //   defaultChecked
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      htmlFor="defaultCheck2"
-                                    >
-                                      Without any split type ACU and other
-                                      mechanical installation or alteration
-                                    </label>
-                                  </div>
-                                </Col>
+                                {followUpQuestionsOptions.map((wsc) => (
+                                  <CustomCheckbox
+                                    purpose="followUp"
+                                    key={wsc.id}
+                                    id={wsc.id}
+                                    name={wsc.id}
+                                    label={wsc.label}
+                                    type="checkbox"
+                                    data={values.followUpChecklist}
+                                  />
+                                ))}
                               </Row>
                             </div>
                           </Col>
@@ -876,7 +423,7 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
                 type="button"
                 className="btn btn-light"
                 onClick={() => {
-                  setmodal_backdrop(false)
+                  setmodal_backdrop(false);
                 }}
               >
                 Cancel
@@ -889,5 +436,5 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
         )}
       </Formik>
     </>
-  )
+  );
 }

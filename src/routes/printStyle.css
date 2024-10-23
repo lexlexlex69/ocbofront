@@ -1,0 +1,28 @@
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  /* .table th {
+    font-size: 12pt;
+    padding: 0 !important;
+  }
+  .table td {
+    font-size: 9pt;
+    padding: 0 !important;
+  } */
+  .page {
+    page-break-after: always;
+    margin: 0.79cm 1.27cm 0.51cm 1.27cm;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+section,
+p {
+  margin: 0;
+}

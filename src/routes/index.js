@@ -55,6 +55,7 @@ import Login3 from "pages/AuthenticationInner/Login";
 import UiCards from "pages/Ui/UiCards";
 import HomeClient from "pages/HomeClient";
 import UiModal from "pages/Ui/UiModal";
+import HTMLCSS from "./HTMLCSS";
 
 const authProtectedRoutes = [
   { path: "/dashboard", component: Analytics },
@@ -121,6 +122,7 @@ const testRoutes = [
   { path: "/FormWizard1", component: FormWizard },
   { path: "/UiModal", component: UiModal },
   { path: "/home", component: HomeClient },
+  { patch: "htmlcss", component: HTMLCSS },
 ];
 
 export { authProtectedRoutes, publicRoutes, testRoutes };

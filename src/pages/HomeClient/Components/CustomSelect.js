@@ -5,9 +5,10 @@ import React from "react";
 const CustomSelect = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   const { setFieldValue } = useFormikContext();
+  console.log(meta);
   //   console.log(props);
   const handleChange = (selectedOption) => {
-    setFieldValue(field.name, selectedOption ? selectedOption : "");
+    setFieldValue(field.name, selectedOption);
   };
 
   const typeOptions = props.options;
@@ -21,13 +22,15 @@ const CustomSelect = ({ label, ...props }) => {
         )}
       </div>
       <Select
+        classNamePrefix="select2-selection"
         options={typeOptions}
         placeholder={`Please select a ${label}`}
-        value={
-          typeOptions
-            ? typeOptions.find((option) => option.value === field.value)
-            : ""
-        }
+        value={meta.value || null}
+        // value={
+        //   typeOptions
+        //     ? typeOptions.find((option) => option.id === field.id)
+        //     : ""
+        // }
         onChange={handleChange}
         style={{ margin: "20px" }}
         isClearable

@@ -19,9 +19,9 @@ const Authmiddleware = ({
         );
       }
       return (
-        // <Layout>
-        <Component {...props} />
-        // {/* </Layout> */}
+        <Layout>
+          <Component {...props} />
+        </Layout>
       );
     }}
   />

@@ -36,17 +36,13 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
   };
 
   ///////////////////
-  const [ownershipOptions, setOwnershipOptions] = useState("");
+  const [ownershipOptions, setOwnershipOptions] = useState([]);
   const [methodAcquisitionOptions, setMethodAcquisitionOptions] = useState("");
   const [formOwnershipOptions, setFormOwnershipOptions] = useState("");
   const [workScopeChecklistOptions, setWorkScopeChecklistOptions] = useState(
     []
   );
   const [followUpQuestionsOptions, setFollowUpQuestionsOptions] = useState([]);
-
-  function extractLabels(data) {
-    return data.map((item) => item.label);
-  }
 
   const onSubmit = async (values, actions) => {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -152,28 +148,34 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
                     {/* <CardTitle className="mt-0">Special title treatment</CardTitle> */}
                     <CardText>
                       <Row className="mb-3">
-                        <CustomSelect
-                          label="Ownership Status"
-                          name="ownershipStatus"
-                          options={ownershipOptions}
-                        />
+                        <Col md="12">
+                          <CustomSelect
+                            label="Ownership Status"
+                            name="ownershipStatus"
+                            options={ownershipOptions}
+                          />
+                        </Col>
                       </Row>
                       {values.ownershipStatus.id === 3 && (
                         <Row className="mb-3">
-                          <CustomSelect
-                            label="Method of lot/property acquisition"
-                            name="methodAcquisition"
-                            options={methodAcquisitionOptions}
-                          />
+                          <Col md="12">
+                            <CustomSelect
+                              label="Method of lot/property acquisition"
+                              name="methodAcquisition"
+                              options={methodAcquisitionOptions}
+                            />
+                          </Col>
                         </Row>
                       )}
 
                       <Row className="mb-3">
-                        <CustomSelect
-                          label="Form of Ownership"
-                          name="formOwnership"
-                          options={formOwnershipOptions}
-                        />
+                        <Col md="12">
+                          <CustomSelect
+                            label="Form of Ownership"
+                            name="formOwnership"
+                            options={formOwnershipOptions}
+                          />
+                        </Col>
                       </Row>
                     </CardText>
                   </CardBody>

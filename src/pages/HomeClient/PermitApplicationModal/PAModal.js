@@ -1,5 +1,5 @@
 import { Modal } from "reactstrap";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PermitApplicationModalContent from "./PermitApplicationModalContent";
 
 export default function PAModal({ title }) {
@@ -9,6 +9,7 @@ export default function PAModal({ title }) {
     setmodal_backdrop(!modal_backdrop);
     removeBodyCss();
   }
+
   function removeBodyCss() {
     document.body.classList.add("no_padding");
   }

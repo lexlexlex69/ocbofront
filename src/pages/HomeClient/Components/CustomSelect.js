@@ -5,14 +5,7 @@ import React from "react";
 const CustomSelect = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   const { setFieldValue } = useFormikContext();
-  console.log(meta);
-  //   console.log(props);
-  const handleChange = (selectedOption) => {
-    setFieldValue(field.name, selectedOption);
-  };
-
-  const typeOptions = props.options;
-
+  const errorStyle = { border: "1px solid #f46a6a" };
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -21,21 +14,22 @@ const CustomSelect = ({ label, ...props }) => {
           <p style={{ marginBottom: "0", color: "#f46a6a" }}>*{meta.error}</p>
         )}
       </div>
-      <Select
-        classNamePrefix="select2-selection"
-        options={typeOptions}
-        placeholder={`Please select a ${label}`}
-        value={meta.value || null}
-        // value={
-        //   typeOptions
-        //     ? typeOptions.find((option) => option.id === field.id)
-        //     : ""
-        // }
-        onChange={handleChange}
-        style={{ margin: "20px" }}
-        isClearable
+
+      <select
+        className="form-select"
+        {...field}
         {...props}
-      />
+        placeholder="select"
+        style={meta.touched && meta.error ? errorStyle : {}}
+      >
+        <option value="">{`Select a ${label}`}</option>
+        {props.options &&
+          props.options.map((option, index) => (
+            <option key={index} value={option.id}>
+              {option.label}
+            </option>
+          ))}
+      </select>
     </>
   );
 };

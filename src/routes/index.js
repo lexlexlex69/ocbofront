@@ -55,7 +55,8 @@ import Login3 from "pages/AuthenticationInner/Login";
 import UiCards from "pages/Ui/UiCards";
 import HomeClient from "pages/HomeClient";
 import UiModal from "pages/Ui/UiModal";
-import HTMLCSS from "./HTMLCSS";
+import FormElements from "pages/Forms/FormElements";
+import FormLayouts from "pages/Forms/FormLayouts";
 
 const authProtectedRoutes = [
   { path: "/dashboard", component: Analytics },
@@ -121,8 +122,9 @@ const publicRoutes = [
 const testRoutes = [
   { path: "/FormWizard1", component: FormWizard },
   { path: "/UiModal", component: UiModal },
+  { path: "/FormElements", component: FormElements },
+  { path: "/FormLayouts", component: FormLayouts },
   { path: "/home", component: HomeClient },
-  { patch: "htmlcss", component: HTMLCSS },
 ];
 
 export { authProtectedRoutes, publicRoutes, testRoutes };

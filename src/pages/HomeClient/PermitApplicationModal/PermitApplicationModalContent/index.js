@@ -47,7 +47,7 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
   const onSubmit = async (values, actions) => {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
     // console.log(values[methodAcquisition]);
-    if (values.ownershipStatus !== 3)
+    if (values.ownershipStatus !== "3")
       values = { ...values, methodAcquisition: 0 };
     console.log(values);
     // setmodal_backdrop(false);
@@ -156,7 +156,8 @@ export default function PermitApplicationModalContent({ setmodal_backdrop }) {
                           />
                         </Col>
                       </Row>
-                      {values.ownershipStatus.id === 3 && (
+                      {/* {console.log(values.ownershipStatus === "3")} */}
+                      {values.ownershipStatus === "3" && (
                         <Row className="mb-3">
                           <Col md="12">
                             <CustomSelect

@@ -1,17 +1,17 @@
-import { useField, useFormikContext } from "formik";
-import Select from "react-select";
-import { Input, Label } from "reactstrap";
-import React from "react";
+import { useField, useFormikContext } from "formik"
+import Select from "react-select"
+import { Input, Label } from "reactstrap"
+import React from "react"
 
 const CustomInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
-  const { setFieldValue } = useFormikContext();
+  const [field, meta] = useField(props)
+  const { setFieldValue } = useFormikContext()
   //   console.log(props);
   const handleChange = (selectedOption) => {
-    setFieldValue(field.name, selectedOption ? selectedOption.value : "");
-  };
+    setFieldValue(field.name, selectedOption ? selectedOption.value : "")
+  }
 
-  const typeOptions = props.options;
+  const typeOptions = props.options
 
   return (
     <>
@@ -24,11 +24,11 @@ const CustomInput = ({ label, ...props }) => {
       <Input
         {...field}
         {...props}
-        placeholder={`Please enter a ${label}`}
+        placeholder={`Enter a ${label}`}
         className={meta.touched && meta.error ? "border-danger" : ""}
       />
     </>
-  );
-};
+  )
+}
 
-export default CustomInput;
+export default CustomInput

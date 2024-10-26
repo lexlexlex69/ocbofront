@@ -1,10 +1,12 @@
-import { useField, useFormikContext } from "formik";
-import React from "react";
-import { Col, Input, Label } from "reactstrap";
+import { useField, useFormikContext } from "formik"
+import React from "react"
+import { Col, Input, Label } from "reactstrap"
 
 const CustomCheckbox = ({ label, purpose, ...props }) => {
-  const [field, meta] = useField(props);
-  const { setFieldValue } = useFormikContext();
+  const { values } = useFormikContext()
+  // console.log(values.workScopeChecklist)
+  const [field, meta] = useField(props)
+  const { setFieldValue } = useFormikContext()
   // console.log(props);
   return (
     <>
@@ -24,13 +26,22 @@ const CustomCheckbox = ({ label, purpose, ...props }) => {
             }${props.id}`}
             style={{ marginRight: "5px" }}
             onClick={() => {
-              const data = props.data;
-              const newObject = { id: props.id, label: label };
-              const index = data.findIndex((item) => item.id === newObject.id);
-              console.log(index);
+              const data = values.workScopeChecklist
+              const newObject = { id: props.id, label: label }
+              const index = data.some((item) => item.label === label)
+              console.log(index)
 
-              if (index !== -1) {
-                data.splice(index, 1);
+              if (index) {
+                const dataRemoved = data.filter((item) => item.label !== label)
+                console.log(dataRemoved)
+                setFieldValue(
+                  purpose === "workScope"
+                    ? "workScopeChecklist"
+                    : purpose === "followUp"
+                    ? "followUpChecklist"
+                    : "",
+                  dataRemoved
+                )
               } else {
                 setFieldValue(
                   purpose === "workScope"
@@ -39,7 +50,7 @@ const CustomCheckbox = ({ label, purpose, ...props }) => {
                     ? "followUpChecklist"
                     : "",
                   [...data, newObject]
-                );
+                )
               }
             }}
           />
@@ -58,7 +69,7 @@ const CustomCheckbox = ({ label, purpose, ...props }) => {
         </div>
       </Col>
     </>
-  );
-};
+  )
+}
 
-export default CustomCheckbox;
+export default CustomCheckbox

@@ -1,3 +1,7 @@
+import moment from "moment";
+
+const todayDate = moment(new Date()).format("yyyy-MM-DD");
+
 const initialValuesBuildingApp = {
   ownershipStatus: "",
   methodAcquisition: "",
@@ -14,6 +18,9 @@ const initialValuesBuildingApp = {
   workScopeChecklist: [],
   followUpChecklist: [],
   structuralWork: "",
+  interiorRenovation: "",
+  interiorRenovationDate: todayDate,
+  authorizedSwitch: false,
 };
 
 export { initialValuesBuildingApp };

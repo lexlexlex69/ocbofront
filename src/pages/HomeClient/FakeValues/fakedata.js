@@ -85,6 +85,92 @@ const followUpQuestionsFD = [
   { id: 13, label: "The structure is less than 3-storey" },
 ];
 
+const characterOrOccupancy = [
+  {
+    id: 1,
+    label: "GROUP A",
+    desciption: "RESIDENTIAL (DWELLINGS)",
+    choices: [
+      { id: 1, label: "SINGLE" },
+      { id: 2, label: "DUPLEX" },
+      { id: 3, label: "RESIDENTIAL R-1, R-2" },
+    ],
+  },
+  {
+    id: 2,
+    label: "GROUP B",
+    desciption: "RESIDENTIAL",
+    choices: [
+      { id: 1, label: "HOTEL" },
+      { id: 2, label: "MOTEL" },
+      { id: 3, label: "TOWNHOUSE" },
+      { id: 4, label: "DORMITORY" },
+      { id: 5, label: "BOARDINGHOUSE/LODGING HOUSE" },
+      { id: 6, label: "RESIDENTIAL R-3, R-4, R-5" },
+    ],
+  },
+  {
+    id: 3,
+    label: "GROUP C",
+    desciption: "EDUCATIONAL & RECREATIONAL",
+    choices: [
+      { id: 1, label: "SCHOOL BUILDING" },
+      { id: 2, label: "SCHOOL AUDITORIUM, GYMNASIUM" },
+      { id: 3, label: "CIVIC CENTER" },
+      { id: 4, label: "CLUB HOUSE" },
+      { id: 5, label: "CHURCH, MOSQUE, TEMPLE, CHAPEL" },
+    ],
+  },
+  {
+    id: 4,
+    label: "GROUP D",
+    desciption: "INSTITUTIONAL",
+    choices: [
+      { id: 1, label: "HOSPITAL OR SIMIAL STRUCTURE" },
+      { id: 2, label: "HOME FOR THE AGED" },
+      { id: 3, label: "GOVERNMENT OFFICE" },
+    ],
+  },
+  {
+    id: 5,
+    label: "GROUP E",
+    desciption: "COMMERCIAL",
+    choices: [
+      { id: 1, label: "BANK" },
+      { id: 2, label: "STORE" },
+      { id: 3, label: "SHOPPING CENTER/ MALL" },
+      { id: 4, label: "DRINKING/ DINING ESTABLISHMENT" },
+      { id: 5, label: "SHOP (i.e.DRESS SHOP, TAILORING, BABERSHOP, etc." },
+    ],
+  },
+  {
+    id: 6,
+    label: "GROUP F",
+    desciption: "LIGHT INDUSTRIAL",
+    choices: [
+      {
+        id: 1,
+        label:
+          "FACTORY/ PLANT/ WAREHOUSE (USING INCOMBUSTIBLE/ NON-EXPLOSIVE MATERIALS",
+      },
+    ],
+  },
+  {
+    id: 7,
+    label: "GROUP G",
+    desciption: "MEDIUM INDUSTRIAL",
+    choices: [
+      {
+        id: 1,
+        label: "STORAGE/ WAREHOUSE (FOR HAZARDOUS/ HIGHLY FLAMMABLE MATERIALS",
+      },
+      {
+        id: 2,
+        label: "FACTORY (FOR HA)",
+      },
+    ],
+  },
+];
 const buildingPermitAppicationQuestions = [
   {
     header: "LAND OWNERSHIP",

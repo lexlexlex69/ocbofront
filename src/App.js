@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 
 // Import Routes all
 import { authProtectedRoutes, publicRoutes, testRoutes } from "./routes";
-
+//sa/sadfsadfsadf
 // Import all middleware
 import Authmiddleware from "./routes/route";
 
@@ -108,7 +108,7 @@ const App = (props) => {
               layout={HorizontalLayout}
               component={route.component}
               key={idx}
-              isAuthProtected={true}
+              isAuthProtected={false}
               exact
             />
           ))}

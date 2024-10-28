@@ -2,14 +2,16 @@ import { useField, useFormikContext } from "formik";
 import React from "react";
 import { Col, Input, Label } from "reactstrap";
 
-const CustomRadioButton = ({ label, ...props }) => {
+const CustomRadioButton = ({ label, name }) => {
   const { values } = useFormikContext();
   // console.log(values.workScopeChecklist)
-  const [field, meta] = useField(props);
+  // const [field, meta] = useField(props);
   const { setFieldValue } = useFormikContext();
 
-  function handleChange(value){
-    if(values.structuralWork ==)
+  function handleChange(value) {
+    // if(values.structuralWork ===)
+    setFieldValue(name, value);
+    // console.log(values);
   }
   // console.log(props);
   return (
@@ -25,12 +27,12 @@ const CustomRadioButton = ({ label, ...props }) => {
             <input
               className="form-check-input"
               type="radio"
-              name="exampleRadios"
-              id="exampleRadios1"
+              name={name}
+              id={`${name}button1`}
               value="yes"
-              onClick={(e) => console.log(e.target.value)}
+              onClick={(e) => handleChange(e.target.value)}
             />
-            <label className="form-check-label" htmlFor="exampleRadios1">
+            <label className="form-check-label" htmlFor={`${name}button1`}>
               Yes
             </label>
           </span>
@@ -38,12 +40,12 @@ const CustomRadioButton = ({ label, ...props }) => {
             <input
               className="form-check-input"
               type="radio"
-              name="exampleRadios"
-              id="exampleRadios2"
+              name={name}
+              id={`${name}button2`}
               value="no"
-              onClick={(e) => console.log(e.target.value)}
+              onClick={(e) => handleChange(e.target.value)}
             />
-            <label className="form-check-label" htmlFor="exampleRadios2">
+            <label className="form-check-label" htmlFor={`${name}button2`}>
               No
             </label>
           </span>

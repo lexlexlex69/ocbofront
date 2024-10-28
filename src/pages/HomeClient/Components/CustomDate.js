@@ -1,0 +1,35 @@
+import { useField, useFormikContext } from "formik";
+import Select from "react-select";
+import { Input, Label } from "reactstrap";
+import React from "react";
+
+const CustomDate = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+  //   console.log(props);
+
+  const typeOptions = props.options;
+
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Label style={{ marginBottom: "3px" }}>{label}</Label>{" "}
+        {meta.touched && meta.error && (
+          <p style={{ marginBottom: "0", color: "#f46a6a" }}>{meta.error}</p>
+        )}
+      </div>
+      <Input
+        {...field}
+        {...props}
+        placeholder={`Enter a ${label}`}
+        className={meta.touched && meta.error ? "border-danger" : ""}
+      />
+    </>
+  );
+};
+
+export default CustomDate;

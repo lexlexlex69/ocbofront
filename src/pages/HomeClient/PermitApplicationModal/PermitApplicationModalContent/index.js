@@ -18,6 +18,9 @@ import CustomInput from "pages/HomeClient/Components/CustomInput";
 import CustomCheckbox from "pages/HomeClient/Components/CustomCheckbox";
 import { initialValuesBuildingApp } from "pages/HomeClient/utils/initialValues";
 import CustomRadioButton from "pages/HomeClient/Components/CustomRadioButton";
+import CustomDate from "pages/HomeClient/Components/CustomDate";
+import moment from "moment";
+import CustomSwitch from "pages/HomeClient/Components/CustomSwitch";
 
 const style = { backgroundColor: "#55a5e6", color: "white" };
 
@@ -323,18 +326,116 @@ export default function PermitApplicationModalContent({
                 className="card-header  border-bottom text-uppercase"
                 style={style}
               >
+                AUTHORIZED REPRESENTATIVE&#39;S DETAILS &#40;OPTIONAL&#41;
+              </h5>
+              <CardBody>
+                {/* <CardTitle className="mt-0">Special title treatment</CardTitle> */}
+                <CustomSwitch
+                  label="Add authorized representative."
+                  name="authorizedSwitch"
+                />
+                {values.authorizedSwitch && (
+                  <CardText>
+                    <Row className="mb-3">
+                      <Col md="5">
+                        <CustomInput
+                          label="Surname"
+                          name="surname"
+                          type="text"
+                        />
+                      </Col>
+                      <Col md="5">
+                        <CustomInput
+                          label="First Name"
+                          name="firstName"
+                          type="text"
+                        />
+                      </Col>
+                      <Col md="1">
+                        <CustomInput label="M.I" name="mi" type="text" />
+                      </Col>
+                      <Col md="1">
+                        <CustomInput label="Suffix" name="suffix" type="text" />
+                      </Col>
+                    </Row>
+                    <Row className="mb-3">
+                      <Col md="12">
+                        <Label>Address:</Label>
+                        <Row>
+                          <Col md="3">
+                            <CustomInput
+                              label="Address"
+                              name="purok"
+                              type="text"
+                            />
+                          </Col>
+                          <Col md="2">
+                            <CustomInput
+                              label="sdfdf"
+                              name="subdivision"
+                              type="text"
+                            />
+                          </Col>
+                          <Col md="3">
+                            <CustomSelect
+                              label="Barangay"
+                              name="applicantBarangay"
+                              options={ownershipOptions}
+                            />
+                          </Col>
+                          <Col md="2">
+                            <CustomInput
+                              label="sdfdf"
+                              name="applicantCity"
+                              type="text"
+                            />
+                          </Col>
+                          <Col md="2">
+                            <CustomInput
+                              label="sdfdf"
+                              name="applicantZipcode"
+                              type="text"
+                            />
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                    <Row className="mb-3">
+                      <Col md="5">
+                        <CustomInput
+                          label="Tel No"
+                          name="appplicantTelNo"
+                          type="text"
+                        />
+                      </Col>
+                    </Row>
+                  </CardText>
+                )}
+              </CardBody>
+            </Card>
+            <Card
+              style={{
+                border: "2px solid rgba(0, 0, 0, 0.05)",
+                boxShadow: "none",
+              }}
+            >
+              <h5
+                className="card-header  border-bottom text-uppercase"
+                style={style}
+              >
                 Additional Information
               </h5>
               <CardBody>
                 {/* <CardTitle className="mt-0">Special title treatment</CardTitle> */}
                 <CardText>
                   <Row className="mb-3">
-                    <Label>Ownership Status:</Label>
-                    <Select
-                      isClearable="true"
-                      name=""
-                      classNamePrefix="select2-selection"
-                    />
+                    <Col md="12">
+                      <CustomSelect
+                        label="Type of Activity"
+                        name="ownershipStatus"
+                        options={ownershipOptions}
+                      />
+                    </Col>
                   </Row>
 
                   <Row className="mb-3">
@@ -398,6 +499,12 @@ export default function PermitApplicationModalContent({
                                 name="structuralWork"
                               />
                             </Row>
+                            <Row className="mb-3">
+                              <CustomRadioButton
+                                label="Is this an interior renovation within the mall?"
+                                name="interiorRenovation"
+                              />
+                            </Row>
 
                             <Row className="mb-3">
                               <Col>
@@ -417,18 +524,10 @@ export default function PermitApplicationModalContent({
                                 />
                               </Col>
                               <Col sm="12" lg="6">
-                                <div className="col-md-10">
-                                  <input
-                                    className="form-control"
-                                    type="date"
-                                    defaultValue="2019-08-19"
-                                    id="example-date-input"
-                                  />
-                                </div>
-                                <CustomInput
+                                <CustomDate
                                   label="Date Issued"
-                                  name="projectTitle"
-                                  type="text"
+                                  name="interiorRenovationDate"
+                                  type="date"
                                 />
                               </Col>
                             </Row>
@@ -439,12 +538,13 @@ export default function PermitApplicationModalContent({
                     {/* <div id="google1">fdfdfdf</div> */}
                   </Row>
                   <Row className="mb-3">
-                    <Label>Form of Ownership:</Label>
-                    <Select
-                      isClearable="true"
-                      name=""
-                      classNamePrefix="select2-selection"
-                    />
+                    <Col md="12">
+                      <CustomSelect
+                        label="Use of Character or Occupancy"
+                        name="ownershipStatus"
+                        options={ownershipOptions}
+                      />
+                    </Col>
                   </Row>
                   <Row className="mb-3">
                     <div>

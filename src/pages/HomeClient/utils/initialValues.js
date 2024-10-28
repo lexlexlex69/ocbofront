@@ -13,6 +13,7 @@ const initialValuesBuildingApp = {
   city: "",
   workScopeChecklist: [],
   followUpChecklist: [],
-}
+  structuralWork: "",
+};
 
-export { initialValuesBuildingApp }
+export { initialValuesBuildingApp };

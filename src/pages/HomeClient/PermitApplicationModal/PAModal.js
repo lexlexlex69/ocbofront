@@ -1,37 +1,37 @@
-import { Modal } from "reactstrap"
-import React, { useEffect, useState, useRef } from "react"
-import PermitApplicationModalContent from "./PermitApplicationModalContent"
-import { Form, Formik } from "formik"
-import { initialValuesBuildingApp } from "../utils/initialValues"
+import { Modal } from "reactstrap";
+import React, { useEffect, useState, useRef } from "react";
+import PermitApplicationModalContent from "./PermitApplicationModalContent";
+import { Form, Formik } from "formik";
+import { initialValuesBuildingApp } from "../utils/initialValues";
 
 export default function PAModal({ title }) {
-  const googleRef = useRef(null)
+  const googleRef = useRef(null);
   const scrollToGoogle = () => {
-    googleRef.current.scrollIntoView({ behavior: "smooth" })
-  }
+    googleRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
-  const [modal_backdrop, setmodal_backdrop] = useState(false)
+  const [modal_backdrop, setmodal_backdrop] = useState(false);
 
   function tog_backdrop() {
-    setmodal_backdrop(!modal_backdrop)
-    removeBodyCss()
+    setmodal_backdrop(!modal_backdrop);
+    removeBodyCss();
   }
 
   function removeBodyCss() {
-    document.body.classList.add("no_padding")
+    document.body.classList.add("no_padding");
   }
 
   const onSubmit = async (values, actions) => {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
     // console.log(values[methodAcquisition]);
     if (values.ownershipStatus !== "3")
-      values = { ...values, methodAcquisition: "" }
+      values = { ...values, methodAcquisition: "" };
     if (values.ownershipStatus === "2")
-      values = { ...values, formOwnership: "2" }
-    console.log(values)
+      values = { ...values, formOwnership: "2" };
+    console.log(values);
     // setmodal_backdrop(false);
     // actions.resetForm();
-  }
+  };
 
   return (
     <>
@@ -39,7 +39,7 @@ export default function PAModal({ title }) {
         type="button"
         className="btn btn-primary "
         onClick={() => {
-          tog_backdrop()
+          tog_backdrop();
         }}
         data-toggle="modal"
         data-target=".bs-example-modal-lg"
@@ -50,7 +50,7 @@ export default function PAModal({ title }) {
       <Modal
         isOpen={modal_backdrop}
         toggle={() => {
-          tog_backdrop()
+          tog_backdrop();
         }}
         backdrop={"static"}
         id="staticBackdrop"
@@ -71,7 +71,7 @@ export default function PAModal({ title }) {
                   type="button"
                   className="btn-close"
                   onClick={() => {
-                    setmodal_backdrop(false)
+                    setmodal_backdrop(false);
                   }}
                   aria-label="Close"
                 ></button>
@@ -91,7 +91,7 @@ export default function PAModal({ title }) {
                   type="button"
                   className="btn btn-light"
                   onClick={() => {
-                    setmodal_backdrop(false)
+                    setmodal_backdrop(false);
                   }}
                 >
                   Cancel
@@ -99,12 +99,12 @@ export default function PAModal({ title }) {
                 <button type="submit" className="btn btn-primary">
                   Proceed
                 </button>
-                <button onClick={scrollToGoogle}>Go to Google Section</button>
+                {/* <button onClick={scrollToGoogle}>Go to Google Section</button> */}
               </div>
             </Form>
           )}
         </Formik>
       </Modal>
     </>
-  )
+  );
 }

@@ -1,17 +1,17 @@
-import { useField, useFormikContext } from "formik"
-import { Label } from "reactstrap"
-import React from "react"
+import { useField, useFormikContext } from "formik";
+import { Label } from "reactstrap";
+import React from "react";
 const CustomSelect = ({ label, ...props }) => {
-  const [field, meta] = useField(props)
-  const { setFieldValue } = useFormikContext()
-  const errorStyle = { border: "1px solid #f46a6a" }
-  const { values } = useFormikContext()
+  const [field, meta] = useField(props);
+  const { setFieldValue } = useFormikContext();
+  const errorStyle = { border: "1px solid #f46a6a" };
+  const { values } = useFormikContext();
   // console.log(values)
 
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Label>{label}</Label>{" "}
+        <Label style={{ marginBottom: "3px" }}>{label}</Label>{" "}
         {meta.touched && meta.error && (
           <p style={{ marginBottom: "0", color: "#f46a6a" }}>*{meta.error}</p>
         )}
@@ -46,7 +46,7 @@ const CustomSelect = ({ label, ...props }) => {
           ))}
       </select>
     </>
-  )
-}
+  );
+};
 
-export default CustomSelect
+export default CustomSelect;

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react"
-import { Col, Row, Card, CardBody, CardText, Label, Input } from "reactstrap"
-import { Link } from "react-router-dom"
-import Select, { StylesConfig } from "react-select"
-import * as yup from "yup"
+import React, { useEffect, useState } from "react";
+import { Col, Row, Card, CardBody, CardText, Label, Input } from "reactstrap";
+import { Link } from "react-router-dom";
+import Select, { StylesConfig } from "react-select";
+import * as yup from "yup";
 import {
   ownershipFD,
   methodAcquisitionFD,
@@ -11,14 +11,15 @@ import {
   followUpQuestionsFD,
   buildingPermitAppicationQuestions,
   barangayFD,
-} from "pages/HomeClient/FakeValues/fakedata"
-import { Field, Form, Formik } from "formik"
-import CustomSelect from "pages/HomeClient/Components/CustomSelect"
-import CustomInput from "pages/HomeClient/Components/CustomInput"
-import CustomCheckbox from "pages/HomeClient/Components/CustomCheckbox"
-import { initialValuesBuildingApp } from "pages/HomeClient/utils/initialValues"
+} from "pages/HomeClient/FakeValues/fakedata";
+import { Field, Form, Formik } from "formik";
+import CustomSelect from "pages/HomeClient/Components/CustomSelect";
+import CustomInput from "pages/HomeClient/Components/CustomInput";
+import CustomCheckbox from "pages/HomeClient/Components/CustomCheckbox";
+import { initialValuesBuildingApp } from "pages/HomeClient/utils/initialValues";
+import CustomRadioButton from "pages/HomeClient/Components/CustomRadioButton";
 
-const style = { backgroundColor: "#55a5e6", color: "white" }
+const style = { backgroundColor: "#55a5e6", color: "white" };
 
 export default function PermitApplicationModalContent({
   setmodal_backdrop,
@@ -26,49 +27,51 @@ export default function PermitApplicationModalContent({
   googleRef,
 }) {
   ///////////////////////////
-  const [filterParams, setFilterParams] = useState([])
-  console.log(values.workScopeChecklist)
+  const [filterParams, setFilterParams] = useState([]);
+  console.log(values.workScopeChecklist);
   const handleInputChange = (e) => {
-    let exists = filterParams.find((filter) => filter === e.target.value)
+    let exists = filterParams.find((filter) => filter === e.target.value);
     if (exists) {
       const updatedFilters = filterParams.filter(
         (filter) => filter !== e.target.value
-      )
-      setFilterParams(updatedFilters)
+      );
+      setFilterParams(updatedFilters);
     } else {
-      setFilterParams([...filterParams.params, e.target.value])
+      setFilterParams([...filterParams.params, e.target.value]);
     }
-  }
+  };
 
   const showScopeOfWork = values.workScopeChecklist.some(
     (item) => item.label === "Interior Renovation"
-  )
+  );
 
   ///////////////////
-  const [ownershipOptions, setOwnershipOptions] = useState([])
-  const [methodAcquisitionOptions, setMethodAcquisitionOptions] = useState("")
-  const [formOwnershipOptions, setFormOwnershipOptions] = useState("")
-  const [workScopeChecklistOptions, setWorkScopeChecklistOptions] = useState([])
-  const [followUpQuestionsOptions, setFollowUpQuestionsOptions] = useState([])
+  const [ownershipOptions, setOwnershipOptions] = useState([]);
+  const [methodAcquisitionOptions, setMethodAcquisitionOptions] = useState("");
+  const [formOwnershipOptions, setFormOwnershipOptions] = useState("");
+  const [workScopeChecklistOptions, setWorkScopeChecklistOptions] = useState(
+    []
+  );
+  const [followUpQuestionsOptions, setFollowUpQuestionsOptions] = useState([]);
 
   useEffect(() => {
-    const ownershipFDFetch = ownershipFD
-    setOwnershipOptions(ownershipFDFetch)
+    const ownershipFDFetch = ownershipFD;
+    setOwnershipOptions(ownershipFDFetch);
 
-    const methodAcquisitionFDFetch = methodAcquisitionFD
-    setMethodAcquisitionOptions(methodAcquisitionFDFetch)
+    const methodAcquisitionFDFetch = methodAcquisitionFD;
+    setMethodAcquisitionOptions(methodAcquisitionFDFetch);
 
-    const formOwnershipFDFetch = formOwnershipFD
-    setFormOwnershipOptions(formOwnershipFDFetch)
+    const formOwnershipFDFetch = formOwnershipFD;
+    setFormOwnershipOptions(formOwnershipFDFetch);
 
-    const workScopeChecklistFDFetch = workScopeCheckistFD
-    setWorkScopeChecklistOptions(workScopeChecklistFDFetch)
+    const workScopeChecklistFDFetch = workScopeCheckistFD;
+    setWorkScopeChecklistOptions(workScopeChecklistFDFetch);
 
-    const followUpQuestionsFDFetch = followUpQuestionsFD
-    setFollowUpQuestionsOptions(followUpQuestionsFDFetch)
+    const followUpQuestionsFDFetch = followUpQuestionsFD;
+    setFollowUpQuestionsOptions(followUpQuestionsFDFetch);
 
     // console.log(workScopeChecklistOptions);
-  }, [])
+  }, []);
 
   const schema = yup.object().shape({
     ownershipStatus: yup
@@ -97,7 +100,7 @@ export default function PermitApplicationModalContent({
     // acceptedTos: yup
     //   .boolean()
     //   .oneOf([true], "Please accept the terms of service"),
-  })
+  });
 
   return (
     <>
@@ -368,25 +371,72 @@ export default function PermitApplicationModalContent({
                           <Row>
                             <h2 className="font-size-18 mb-4">
                               <i className="mdi mdi-arrow-right text-primary mr-1"></i>{" "}
-                              Scope of Work
+                              Interior Renovation
                             </h2>
                           </Row>
                           <Row style={{ padding: "0px 20px" }}>
-                            {workScopeChecklistOptions.map((wsc) => (
-                              <CustomCheckbox
-                                purpose="workScope"
-                                key={wsc.id}
-                                id={wsc.id}
-                                name={wsc.id}
-                                label={wsc.label}
-                                type="checkbox"
+                            <Row className="mb-3">
+                              <Col sm="12" lg="6">
+                                <CustomInput
+                                  label="Unit/ Stall Number "
+                                  name="projectTitle"
+                                  type="text"
+                                />
+                              </Col>
+
+                              <Col sm="12" lg="6">
+                                <CustomInput
+                                  label="Establisment Name "
+                                  name="projectTitle"
+                                  type="text"
+                                />
+                              </Col>
+                            </Row>
+                            <Row className="mb-3">
+                              <CustomRadioButton
+                                label="Does the project involve any structural work?"
+                                name="structuralWork"
                               />
-                            ))}
+                            </Row>
+
+                            <Row className="mb-3">
+                              <Col>
+                                <CustomSelect
+                                  label="For Interior Renovation (Leased Space)"
+                                  name="ownershipStatus"
+                                  options={ownershipOptions}
+                                />
+                              </Col>
+                            </Row>
+                            <Row>
+                              <Col sm="12" lg="6">
+                                <CustomInput
+                                  label="Building Permit No."
+                                  name="projectTitle"
+                                  type="text"
+                                />
+                              </Col>
+                              <Col sm="12" lg="6">
+                                <div className="col-md-10">
+                                  <input
+                                    className="form-control"
+                                    type="date"
+                                    defaultValue="2019-08-19"
+                                    id="example-date-input"
+                                  />
+                                </div>
+                                <CustomInput
+                                  label="Date Issued"
+                                  name="projectTitle"
+                                  type="text"
+                                />
+                              </Col>
+                            </Row>
                           </Row>
                         </div>
                       </Col>
                     </div>
-                    <div id="google1">fdfdfdf</div>
+                    {/* <div id="google1">fdfdfdf</div> */}
                   </Row>
                   <Row className="mb-3">
                     <Label>Form of Ownership:</Label>
@@ -401,13 +451,13 @@ export default function PermitApplicationModalContent({
                       <Col md="12">
                         <div className="mt-4">
                           <Row>
-                            <div
+                            {/* <div
                               ref={googleRef}
                               id="google"
                               style={{ marginTop: "20px" }}
                             >
                               dfgfgfgf
-                            </div>
+                            </div> */}
                             <h2 className="font-size-18 mb-4">
                               <i className="mdi mdi-arrow-right text-primary mr-1"></i>{" "}
                               Follow-up Questions
@@ -437,5 +487,5 @@ export default function PermitApplicationModalContent({
         </Row>
       </>
     </>
-  )
+  );
 }

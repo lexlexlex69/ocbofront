@@ -31,20 +31,8 @@ export default function PermitApplicationModalContent({
 }) {
   ///////////////////////////
   const [filterParams, setFilterParams] = useState([]);
-  console.log(values.workScopeChecklist);
-  const handleInputChange = (e) => {
-    let exists = filterParams.find((filter) => filter === e.target.value);
-    if (exists) {
-      const updatedFilters = filterParams.filter(
-        (filter) => filter !== e.target.value
-      );
-      setFilterParams(updatedFilters);
-    } else {
-      setFilterParams([...filterParams.params, e.target.value]);
-    }
-  };
 
-  const showScopeOfWork = values.workScopeChecklist.some(
+  const showScopeOfWork = values.addInfoworkScopeChecklist.some(
     (item) => item.label === "Interior Renovation"
   );
 
@@ -132,18 +120,18 @@ export default function PermitApplicationModalContent({
                     <Col md="12">
                       <CustomSelect
                         label="Ownership Status"
-                        name="ownershipStatus"
+                        name="landOwnershipStatus"
                         options={ownershipOptions}
                       />
                     </Col>
                   </Row>
                   {/* {console.log(values.ownershipStatus === "3")} */}
-                  {values.ownershipStatus === "3" && (
+                  {values.landOwnershipStatus === "3" && (
                     <Row className="mb-3">
                       <Col md="12">
                         <CustomSelect
                           label="Method of lot/property acquisition"
-                          name="methodAcquisition"
+                          name="landOwnershipMethod"
                           options={methodAcquisitionOptions}
                         />
                       </Col>
@@ -154,7 +142,7 @@ export default function PermitApplicationModalContent({
                     <Col md="12">
                       <CustomSelect
                         label="Form of Ownership"
-                        name="formOwnership"
+                        name="landOwnershipForm"
                         options={formOwnershipOptions}
                       />
                     </Col>
@@ -181,28 +169,44 @@ export default function PermitApplicationModalContent({
                     <Col md="6">
                       <CustomInput
                         label="Project Title"
-                        name="projectTitle"
+                        name="projLocProjectTitle"
                         type="text"
                       />
                     </Col>
                     <Col md="3">
-                      <CustomInput label="Lot No" name="lotNo" type="text" />
+                      <CustomInput
+                        label="Lot No"
+                        name="projLocLotNo"
+                        type="text"
+                      />
                     </Col>
                     <Col md="3">
-                      <CustomInput label="Blk No" name="blkNo" type="text" />
+                      <CustomInput
+                        label="Blk No"
+                        name="projLocBlkNo"
+                        type="text"
+                      />
                     </Col>
                   </Row>
                   <Row className="mb-3">
                     <Col md="6">
-                      <CustomInput label="Tct No" name="tctNo" type="text" />
+                      <CustomInput
+                        label="Tct No"
+                        name="projLocTctNo"
+                        type="text"
+                      />
                     </Col>
                     <Col md="3">
-                      <CustomInput label="Street" name="street" type="text" />
+                      <CustomInput
+                        label="Street"
+                        name="projLocStreet"
+                        type="text"
+                      />
                     </Col>
                     <Col md="3">
                       <CustomSelect
                         label="Barangay"
-                        name="barangay"
+                        name="projLocBarangay"
                         options={ownershipOptions}
                       />
                     </Col>
@@ -211,19 +215,23 @@ export default function PermitApplicationModalContent({
                     <Col md="6">
                       <CustomInput
                         label="Tax dec No"
-                        name="taxDecNo"
+                        name="projLocTaxDecNo"
                         type="text"
                       />
                     </Col>
                     <Col md="3">
                       <CustomInput
                         label="Disctrict"
-                        name="disctrict"
+                        name="projLocDisctrict"
                         type="text"
                       />
                     </Col>
                     <Col md="3">
-                      <CustomInput label="City" name="city" type="text" />
+                      <CustomInput
+                        label="City"
+                        name="projLocCity"
+                        type="text"
+                      />
                     </Col>
                   </Row>
                 </CardText>
@@ -246,20 +254,28 @@ export default function PermitApplicationModalContent({
                 <CardText>
                   <Row className="mb-3">
                     <Col md="5">
-                      <CustomInput label="Surname" name="surname" type="text" />
+                      <CustomInput
+                        label="Surname"
+                        name="applicantSurname"
+                        type="text"
+                      />
                     </Col>
                     <Col md="5">
                       <CustomInput
                         label="First Name"
-                        name="firstName"
+                        name="applicantFirstname"
                         type="text"
                       />
                     </Col>
                     <Col md="1">
-                      <CustomInput label="M.I" name="mi" type="text" />
+                      <CustomInput label="M.I" name="applicantMI" type="text" />
                     </Col>
                     <Col md="1">
-                      <CustomInput label="Suffix" name="suffix" type="text" />
+                      <CustomInput
+                        label="Suffix"
+                        name="applicantSuffix"
+                        type="text"
+                      />
                     </Col>
                   </Row>
                   <Row className="mb-3">
@@ -269,35 +285,35 @@ export default function PermitApplicationModalContent({
                         <Col md="3">
                           <CustomInput
                             label="Address"
-                            name="purok"
+                            name="applicantAddPurok"
                             type="text"
                           />
                         </Col>
                         <Col md="2">
                           <CustomInput
-                            label="sdfdf"
-                            name="subdivision"
+                            label="Subdivision"
+                            name="applicantAddSubdivision"
                             type="text"
                           />
                         </Col>
                         <Col md="3">
                           <CustomSelect
                             label="Barangay"
-                            name="applicantBarangay"
+                            name="applicantAddBarangay"
                             options={ownershipOptions}
                           />
                         </Col>
                         <Col md="2">
                           <CustomInput
-                            label="sdfdf"
-                            name="applicantCity"
+                            label="City"
+                            name="applicantAddCity"
                             type="text"
                           />
                         </Col>
                         <Col md="2">
                           <CustomInput
-                            label="sdfdf"
-                            name="applicantZipcode"
+                            label="Zip code"
+                            name="applicantAddZipCode"
                             type="text"
                           />
                         </Col>
@@ -308,7 +324,7 @@ export default function PermitApplicationModalContent({
                     <Col md="5">
                       <CustomInput
                         label="Tel No"
-                        name="appplicantTelNo"
+                        name="applicantTel"
                         type="text"
                       />
                     </Col>
@@ -340,22 +356,30 @@ export default function PermitApplicationModalContent({
                       <Col md="5">
                         <CustomInput
                           label="Surname"
-                          name="surname"
+                          name="authorizeSurname"
                           type="text"
                         />
                       </Col>
                       <Col md="5">
                         <CustomInput
                           label="First Name"
-                          name="firstName"
+                          name="authorizeFirstname"
                           type="text"
                         />
                       </Col>
                       <Col md="1">
-                        <CustomInput label="M.I" name="mi" type="text" />
+                        <CustomInput
+                          label="M.I"
+                          name="authorizeMI"
+                          type="text"
+                        />
                       </Col>
                       <Col md="1">
-                        <CustomInput label="Suffix" name="suffix" type="text" />
+                        <CustomInput
+                          label="Suffix"
+                          name="authorizeSuffix"
+                          type="text"
+                        />
                       </Col>
                     </Row>
                     <Row className="mb-3">
@@ -365,35 +389,35 @@ export default function PermitApplicationModalContent({
                           <Col md="3">
                             <CustomInput
                               label="Address"
-                              name="purok"
+                              name="authorizeAddPurok"
                               type="text"
                             />
                           </Col>
                           <Col md="2">
                             <CustomInput
-                              label="sdfdf"
-                              name="subdivision"
+                              label="Subdivision"
+                              name="authorizeAddSubdivision"
                               type="text"
                             />
                           </Col>
                           <Col md="3">
                             <CustomSelect
                               label="Barangay"
-                              name="applicantBarangay"
+                              name="authorizeAddBarangay"
                               options={ownershipOptions}
                             />
                           </Col>
                           <Col md="2">
                             <CustomInput
-                              label="sdfdf"
-                              name="applicantCity"
+                              label="City"
+                              name="authorizeAddCity"
                               type="text"
                             />
                           </Col>
                           <Col md="2">
                             <CustomInput
-                              label="sdfdf"
-                              name="applicantZipcode"
+                              label="Zip code"
+                              name="authorizeAddZipCode"
                               type="text"
                             />
                           </Col>
@@ -404,7 +428,7 @@ export default function PermitApplicationModalContent({
                       <Col md="5">
                         <CustomInput
                           label="Tel No"
-                          name="appplicantTelNo"
+                          name="authorizeTel"
                           type="text"
                         />
                       </Col>
@@ -432,7 +456,7 @@ export default function PermitApplicationModalContent({
                     <Col md="12">
                       <CustomSelect
                         label="Type of Activity"
-                        name="ownershipStatus"
+                        name="AddInfoTypeActivity"
                         options={ownershipOptions}
                       />
                     </Col>
@@ -457,7 +481,6 @@ export default function PermitApplicationModalContent({
                                 name={wsc.id}
                                 label={wsc.label}
                                 type="checkbox"
-                                data={values.workScopeChecklist}
                               />
                             ))}
                           </Row>
@@ -480,7 +503,7 @@ export default function PermitApplicationModalContent({
                               <Col sm="12" lg="6">
                                 <CustomInput
                                   label="Unit/ Stall Number "
-                                  name="projectTitle"
+                                  name="addInfoInteriorUnitStallNumber"
                                   type="text"
                                 />
                               </Col>
@@ -488,7 +511,7 @@ export default function PermitApplicationModalContent({
                               <Col sm="12" lg="6">
                                 <CustomInput
                                   label="Establisment Name "
-                                  name="projectTitle"
+                                  name="addInfoInteriorEstabName"
                                   type="text"
                                 />
                               </Col>
@@ -496,41 +519,45 @@ export default function PermitApplicationModalContent({
                             <Row className="mb-3">
                               <CustomRadioButton
                                 label="Does the project involve any structural work?"
-                                name="structuralWork"
+                                name="addInfoInteriorStructWork"
                               />
                             </Row>
                             <Row className="mb-3">
                               <CustomRadioButton
                                 label="Is this an interior renovation within the mall?"
-                                name="interiorRenovation"
+                                name="addInfoInteriorRenovationMall"
                               />
                             </Row>
 
-                            <Row className="mb-3">
-                              <Col>
-                                <CustomSelect
-                                  label="For Interior Renovation (Leased Space)"
-                                  name="ownershipStatus"
-                                  options={ownershipOptions}
-                                />
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col sm="12" lg="6">
-                                <CustomInput
-                                  label="Building Permit No."
-                                  name="projectTitle"
-                                  type="text"
-                                />
-                              </Col>
-                              <Col sm="12" lg="6">
-                                <CustomDate
-                                  label="Date Issued"
-                                  name="interiorRenovationDate"
-                                  type="date"
-                                />
-                              </Col>
-                            </Row>
+                            {values.addInfoInteriorRenovationMall == "yes" && (
+                              <Row className="mb-3">
+                                <Col>
+                                  <CustomSelect
+                                    label="For Interior Renovation (Leased Space)"
+                                    name="addInfoInteriorLeasedSpace"
+                                    options={ownershipOptions}
+                                  />
+                                </Col>
+                              </Row>
+                            )}
+                            {values.addInfoInteriorRenovationMall == "no" && (
+                              <Row className="mb-3">
+                                <Col sm="12" lg="6">
+                                  <CustomInput
+                                    label="Building Permit No."
+                                    name="addInfoInteriorBuildingNo"
+                                    type="text"
+                                  />
+                                </Col>
+                                <Col sm="12" lg="6">
+                                  <CustomDate
+                                    label="Date Issued"
+                                    name="addInfoInteriorDate"
+                                    type="date"
+                                  />
+                                </Col>
+                              </Row>
+                            )}
                           </Row>
                         </div>
                       </Col>
@@ -541,7 +568,7 @@ export default function PermitApplicationModalContent({
                     <Col md="12">
                       <CustomSelect
                         label="Use of Character or Occupancy"
-                        name="ownershipStatus"
+                        name="addInfoCharacterOccupancy"
                         options={ownershipOptions}
                       />
                     </Col>
@@ -572,7 +599,6 @@ export default function PermitApplicationModalContent({
                                 name={wsc.id}
                                 label={wsc.label}
                                 type="checkbox"
-                                data={values.followUpChecklist}
                               />
                             ))}
                           </Row>

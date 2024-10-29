@@ -23,12 +23,14 @@ const CustomSelect = ({ label, ...props }) => {
         {...props}
         style={meta.touched && meta.error ? errorStyle : {}}
         value={
-          values.ownershipStatus === "2" && field.name === "formOwnership"
+          values.landOwnershipStatus === "2" &&
+          field.name === "landOwnershipForm"
             ? "2"
             : field.value
         }
         disabled={
-          values.ownershipStatus === "2" && field.name === "formOwnership"
+          values.landOwnershipStatus === "2" &&
+          field.name === "landOwnershipForm"
             ? true
             : false
         }

@@ -57,6 +57,7 @@ import HomeClient from "pages/HomeClient";
 import UiModal from "pages/Ui/UiModal";
 import FormElements from "pages/Forms/FormElements";
 import FormLayouts from "pages/Forms/FormLayouts";
+import BasicTable from "pages/Tables/BasicTables";
 
 const authProtectedRoutes = [
   { path: "/dashboard", component: Analytics },
@@ -121,6 +122,7 @@ const publicRoutes = [
 ];
 const testRoutes = [
   { path: "/FormWizard1", component: FormWizard },
+  { path: "/BasicTable", component: BasicTable },
   { path: "/UiModal", component: UiModal },
   { path: "/FormElements", component: FormElements },
   { path: "/FormLayouts", component: FormLayouts },

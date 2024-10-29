@@ -1,13 +1,10 @@
-import { useField, useFormikContext } from "formik"
-import React from "react"
-import { Col, Input, Label } from "reactstrap"
+import { useField, useFormikContext } from "formik";
+import React from "react";
+import { Col, Input, Label } from "reactstrap";
 
 const CustomCheckbox = ({ label, purpose, ...props }) => {
-  const { values } = useFormikContext()
-  // console.log(values.workScopeChecklist)
-  const [field, meta] = useField(props)
-  const { setFieldValue } = useFormikContext()
-  // console.log(props);
+  const { values } = useFormikContext();
+  const { setFieldValue } = useFormikContext();
   return (
     <>
       <Col
@@ -26,31 +23,36 @@ const CustomCheckbox = ({ label, purpose, ...props }) => {
             }${props.id}`}
             style={{ marginRight: "5px" }}
             onClick={() => {
-              const data = values.workScopeChecklist
-              const newObject = { id: props.id, label: label }
-              const index = data.some((item) => item.label === label)
-              console.log(index)
+              const data =
+                purpose === "workScope"
+                  ? values.addInfoworkScopeChecklist
+                  : purpose === "followUp"
+                  ? values.addInfoFollowUpQuestions
+                  : null;
+              const newObject = { id: props.id, label: label };
+              const index = data.some((item) => item.label === label);
+              // console.log(index)
 
               if (index) {
-                const dataRemoved = data.filter((item) => item.label !== label)
-                console.log(dataRemoved)
+                const dataRemoved = data.filter((item) => item.label !== label);
+                console.log(dataRemoved);
                 setFieldValue(
                   purpose === "workScope"
-                    ? "workScopeChecklist"
+                    ? "addInfoworkScopeChecklist"
                     : purpose === "followUp"
-                    ? "followUpChecklist"
+                    ? "addInfoFollowUpQuestions"
                     : "",
                   dataRemoved
-                )
+                );
               } else {
                 setFieldValue(
                   purpose === "workScope"
-                    ? "workScopeChecklist"
+                    ? "addInfoworkScopeChecklist"
                     : purpose === "followUp"
-                    ? "followUpChecklist"
+                    ? "addInfoFollowUpQuestions"
                     : "",
                   [...data, newObject]
-                )
+                );
               }
             }}
           />
@@ -69,7 +71,7 @@ const CustomCheckbox = ({ label, purpose, ...props }) => {
         </div>
       </Col>
     </>
-  )
-}
+  );
+};
 
-export default CustomCheckbox
+export default CustomCheckbox;

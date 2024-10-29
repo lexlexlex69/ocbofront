@@ -11,8 +11,6 @@ const CustomInput = ({ label, ...props }) => {
     setFieldValue(field.name, selectedOption ? selectedOption.value : "");
   };
 
-  const typeOptions = props.options;
-
   return (
     <>
       <div
@@ -21,7 +19,7 @@ const CustomInput = ({ label, ...props }) => {
           justifyContent: "space-between",
         }}
       >
-        <Label style={{ marginBottom: "3px" }}>{label}</Label>{" "}
+        <Label style={{ marginBottom: "3px" }}>{label}:</Label>{" "}
         {meta.touched && meta.error && (
           <p style={{ marginBottom: "0", color: "#f46a6a" }}>{meta.error}</p>
         )}

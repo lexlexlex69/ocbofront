@@ -29,8 +29,8 @@ export default function PAModal({ title }) {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
     // console.log(values[methodAcquisition]);
     if (values.landOwnershipForm !== "3")
-      values = { ...values, landOwnershipMethod: "" };
-    if (values.landOwnershipForm === "2")
+      values = { ...values, landOwnershipMethod: "0" };
+    if (values.landOwnershipStatus === "2")
       values = { ...values, landOwnershipForm: "2" };
     setSteps(2);
     localStorage.setItem("formValues", JSON.stringify(values));

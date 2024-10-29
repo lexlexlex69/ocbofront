@@ -502,7 +502,7 @@ export default function PermitApplicationModalContent({
                             <Row className="mb-3">
                               <Col sm="12" lg="6">
                                 <CustomInput
-                                  label="Unit/ Stall Number "
+                                  label="Unit/ Stall Number"
                                   name="addInfoInteriorUnitStallNumber"
                                   type="text"
                                 />
@@ -510,7 +510,7 @@ export default function PermitApplicationModalContent({
 
                               <Col sm="12" lg="6">
                                 <CustomInput
-                                  label="Establisment Name "
+                                  label="Establisment Name"
                                   name="addInfoInteriorEstabName"
                                   type="text"
                                 />

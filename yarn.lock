@@ -10615,6 +10615,11 @@
   "resolved" "https://registry.npmjs.org/react-timer-hook/-/react-timer-hook-3.0.5.tgz"
   "version" "3.0.5"
 
+"react-to-print@^3.0.2":
+  "integrity" "sha512-FS/Z4LLq0bgWaxd7obygFQ8yRFdKW74iE8fIVjFFsPJWIXmuL8CIO+4me1Hj44lrlxQ00gscSNb3BRM8olbwXg=="
+  "resolved" "https://registry.npmjs.org/react-to-print/-/react-to-print-3.0.2.tgz"
+  "version" "3.0.2"
+
 "react-toast-notifications@^2.4.4":
   "integrity" "sha512-eYuuiSPGLyuMHojRH2U7CbENvFHsvNia39pLM/s10KipIoNs14T7RIJk4aU2N+l++OsSgtJqnFObx9bpwLMU5A=="
   "resolved" "https://registry.npmjs.org/react-toast-notifications/-/react-toast-notifications-2.5.1.tgz"

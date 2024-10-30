@@ -1,0 +1,216 @@
+body {
+  background-color: gray;
+  font-size: 0.5rem;
+  font-family: Arial;
+}
+
+main {
+  background-color: white;
+}
+
+p {
+  margin: 0px;
+  text-align: justify;
+  line-height: 120%;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.small-text {
+  font-size: 0.3rem;
+}
+header {
+  display: flex;
+  margin-bottom: 20px;
+}
+input {
+  padding: 0px;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  width: 7px;
+  height: 7px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0px;
+  position: relative;
+  cursor: pointer;
+  margin: 0px;
+}
+input[type="text"] {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 50px;
+  font-size: 8px;
+}
+textarea {
+  border: none;
+  height: 10px;
+  width: 500px;
+  border-bottom: 1px solid black;
+}
+.header-center {
+  flex: 1;
+  /* background-color: blue; */
+  display: flex;
+  padding-top: 10px;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.header-center img {
+  position: absolute;
+  left: 18%;
+  top: 10px;
+  width: 12%;
+}
+
+.header-center p:first-child {
+  font-size: 0.55rem;
+}
+.header-center p:nth-child(2) {
+  font-size: 0.6rem;
+}
+.header-center p:nth-child(3) {
+  font-size: 0.63rem;
+}
+
+.header-side {
+  /* background-color: red; */
+  width: 20%;
+  height: 30%;
+}
+.right-side-border {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.helpus {
+  margin-top: 10px;
+}
+
+.main-body-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.p1 {
+}
+
+.client-type {
+  display: flex;
+  gap: 10px;
+}
+
+.petsa {
+  display: flex;
+  gap: 50px;
+}
+
+.sex {
+  display: flex;
+  gap: 10px;
+}
+
+.external {
+  display: flex;
+  gap: 10px;
+}
+
+.external div {
+  width: 48%;
+  /* background-color: red; */
+}
+
+.custom-table1 {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.custom-table1 th,
+.custom-table1 td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+/* Set the width of the first column to 10px */
+.custom-table1 td:first-child,
+.custom-table1 th:first-child {
+  width: 5%;
+  height: 5%;
+  padding: 0px;
+}
+
+/* Set the width of the second column to 80px */
+.custom-table1 td:nth-child(2),
+.custom-table1 th:nth-child(2) {
+  width: 95%;
+  height: 5%;
+  padding: 2px;
+}
+
+.custom-table2 {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.custom-table2 th,
+.custom-table2 td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+/* Set the width of the first column to 10px */
+.custom-table2 td:first-child,
+.custom-table2 th:first-child {
+  width: 30%;
+  height: 5%;
+  padding: 10px;
+}
+
+/* Set the width of the second column to 80px */
+.custom-table2 td,
+.custom-table2 th {
+  width: 10%;
+  height: 5%;
+}
+
+.custom-table2 td div,
+.custom-table2 th div {
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mga-instrukyson {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.CCNO {
+  display: flex;
+}
+
+.CCNO div:first-child {
+  padding-right: 15px;
+}
+.CCNO div span,
+.CCNO div span label,
+.CCNO-checkbox-content {
+  display: flex;
+  gap: 3px;
+}
+
+.custom-row th:first-child {
+  width: 30%;
+}
+
+.custom-col {
+  width: 10%;
+}

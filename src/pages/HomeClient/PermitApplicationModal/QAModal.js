@@ -4,9 +4,8 @@ import PermitApplicationModalContent from "./PermitApplicationModalContent";
 import { Form, Formik, useFormikContext } from "formik";
 import { initialValuesBuildingApp } from "../utils/initialValues";
 import SummaryQA from "./component/SummaryQA";
-import QAModal from "./QAModal";
 
-export default function PAModal({ title }) {
+export default function QAModal({ title }) {
   const [steps, setSteps] = useState(1);
 
   const [modal_backdrop, setmodal_backdrop] = useState(false);
@@ -127,7 +126,6 @@ export default function PAModal({ title }) {
                   <button type="submit" className="btn btn-primary">
                     Proceed
                   </button>
-
                   {/* <button onClick={scrollToGoogle}>Go to Google Section</button> */}
                 </div>
               </Form>
@@ -155,7 +153,6 @@ export default function PAModal({ title }) {
               <button type="submit" className="btn btn-primary">
                 Proceed
               </button>
-
               {/* <button onClick={scrollToGoogle}>Go to Google Section</button> */}
             </div>
           </>

@@ -58,6 +58,8 @@ import UiModal from "pages/Ui/UiModal";
 import FormElements from "pages/Forms/FormElements";
 import FormLayouts from "pages/Forms/FormLayouts";
 import BasicTable from "pages/Tables/BasicTables";
+import PermitApplication from "pages/HomeClient/PermitApplicationModal/PermitApplicationModalContent/PermitApplication";
+import FormikContent from "pages/HomeClient/PermitApplicationModal/PermitApplicationModalContent/FormikContent";
 
 const authProtectedRoutes = [
   { path: "/dashboard", component: Analytics },
@@ -123,6 +125,7 @@ const publicRoutes = [
 const testRoutes = [
   { path: "/FormWizard1", component: FormWizard },
   { path: "/BasicTable", component: BasicTable },
+  { path: "/FormikContent", component: FormikContent },
   { path: "/UiModal", component: UiModal },
   { path: "/FormElements", component: FormElements },
   { path: "/FormLayouts", component: FormLayouts },

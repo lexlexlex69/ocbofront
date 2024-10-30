@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import {
   Card,
@@ -21,8 +21,17 @@ import { Link } from "react-router-dom";
 
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb";
+import { Formik } from "formik";
+import PermitApplicationModalContent from "pages/HomeClient/PermitApplicationModal/PermitApplicationModalContent";
+import { initialValuesBuildingApp } from "pages/HomeClient/utils/initialValues";
+import SummaryQA from "pages/HomeClient/PermitApplicationModal/component/SummaryQA";
+import GeneratedChecklist from "pages/HomeClient/PermitApplicationModal/component/GeneratedChecklist";
+import { useReactToPrint } from "react-to-print";
+import BuildingPermitPrintable from "pages/HomeClient/PermitApplicationModal/component/BuildingPermitPrintable";
 
 const FormWizard = () => {
+  const contentRef = useRef();
+  const reactToPrintFn = useReactToPrint({ contentRef });
   //meta title
   document.title = "Form Wizard | Skote - React Admin & Dashboard Template";
 
@@ -77,7 +86,7 @@ const FormWizard = () => {
                             }}
                             disabled={!(passedSteps || []).includes(1)}
                           >
-                            <span className="number">1.</span> Seller Details
+                            <span className="number">1.</span> Answer Form
                           </NavLink>
                         </NavItem>
                         <NavItem
@@ -90,8 +99,7 @@ const FormWizard = () => {
                             }}
                             disabled={!(passedSteps || []).includes(2)}
                           >
-                            <span className="number ms-2">02</span> Company
-                            Document
+                            <span className="number ms-2">02</span> Summary
                           </NavLink>
                         </NavItem>
                         <NavItem
@@ -104,7 +112,8 @@ const FormWizard = () => {
                             }}
                             disabled={!(passedSteps || []).includes(3)}
                           >
-                            <span className="number">03</span> Bank Details
+                            <span className="number">03</span> Generated
+                            Checklist
                           </NavLink>
                         </NavItem>
                         <NavItem
@@ -117,7 +126,7 @@ const FormWizard = () => {
                             }}
                             disabled={!(passedSteps || []).includes(4)}
                           >
-                            <span className="number">04</span> Confirm Detail
+                            <span className="number">04</span> Printables
                           </NavLink>
                         </NavItem>
                       </ul>
@@ -125,259 +134,34 @@ const FormWizard = () => {
                     <div className="content clearfix mt-4">
                       <TabContent activeTab={activeTab}>
                         <TabPane tabId={1}>
-                          <Form>
-                            <Row>
-                              <Col lg="6">
-                                <div className="mb-3">
-                                  <Label for="basicpill-firstname-input1">
-                                    First name
-                                  </Label>
-                                  <Input
-                                    type="text"
-                                    className="form-control"
-                                    id="basicpill-firstname-input1"
-                                    placeholder="Enter Your First Name"
-                                  />
-                                </div>
-                              </Col>
-                              <Col lg="6">
-                                <div className="mb-3">
-                                  <Label for="basicpill-lastname-input2">
-                                    Last name
-                                  </Label>
-                                  <Input
-                                    type="text"
-                                    className="form-control"
-                                    id="basicpill-lastname-input2"
-                                    placeholder="Enter Your Last Name"
-                                  />
-                                </div>
-                              </Col>
-                            </Row>
-
-                            <Row>
-                              <Col lg="6">
-                                <div className="mb-3">
-                                  <Label for="basicpill-phoneno-input3">
-                                    Phone
-                                  </Label>
-                                  <Input
-                                    type="text"
-                                    className="form-control"
-                                    id="basicpill-phoneno-input3"
-                                    placeholder="Enter Your Phone No."
-                                  />
-                                </div>
-                              </Col>
-                              <Col lg="6">
-                                <div className="mb-3">
-                                  <Label for="basicpill-email-input4">
-                                    Email
-                                  </Label>
-                                  <Input
-                                    type="email"
-                                    className="form-control"
-                                    id="basicpill-email-input4"
-                                    placeholder="Enter Your Email ID"
-                                  />
-                                </div>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col lg="12">
-                                <div className="mb-3">
-                                  <Label for="basicpill-address-input1">
-                                    Address
-                                  </Label>
-                                  <textarea
-                                    id="basicpill-address-input1"
-                                    className="form-control"
-                                    rows="2"
-                                    placeholder="Enter Your Address"
-                                  />
-                                </div>
-                              </Col>
-                            </Row>
-                          </Form>
+                          <Formik
+                            initialValues={initialValuesBuildingApp}
+                            // validationSchema={schema}
+                          >
+                            {({ values }) => (
+                              <Form>
+                                <PermitApplicationModalContent
+                                  values={values}
+                                />
+                              </Form>
+                            )}
+                          </Formik>
                         </TabPane>
                         <TabPane tabId={2}>
-                          <div>
-                            <Form>
-                              <Row>
-                                <Col lg="6">
-                                  <div className="mb-3">
-                                    <Label for="basicpill-pancard-input5">
-                                      PAN Card
-                                    </Label>
-                                    <Input
-                                      type="text"
-                                      className="form-control"
-                                      id="basicpill-pancard-input5"
-                                      placeholder="Enter Your PAN No."
-                                    />
-                                  </div>
-                                </Col>
-
-                                <Col lg="6">
-                                  <div className="mb-3">
-                                    <Label for="basicpill-vatno-input6">
-                                      VAT/TIN No.
-                                    </Label>
-                                    <Input
-                                      type="text"
-                                      className="form-control"
-                                      id="basicpill-vatno-input6"
-                                      placeholder="Enter Your VAT/TIN No."
-                                    />
-                                  </div>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col lg="6">
-                                  <div className="mb-3">
-                                    <Label for="basicpill-cstno-input7">
-                                      CST No.
-                                    </Label>
-                                    <Input
-                                      type="text"
-                                      className="form-control"
-                                      id="basicpill-cstno-input7"
-                                      placeholder="Enter Your CST No."
-                                    />
-                                  </div>
-                                </Col>
-
-                                <Col lg="6">
-                                  <div className="mb-3">
-                                    <Label for="basicpill-servicetax-input8">
-                                      Service Tax No.
-                                    </Label>
-                                    <Input
-                                      type="text"
-                                      className="form-control"
-                                      id="basicpill-servicetax-input8"
-                                      placeholder="Enter Your Service Tax No."
-                                    />
-                                  </div>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col lg="6">
-                                  <div className="mb-3">
-                                    <Label for="basicpill-companyuin-input9">
-                                      Company UIN
-                                    </Label>
-                                    <Input
-                                      type="text"
-                                      className="form-control"
-                                      id="basicpill-companyuin-input9"
-                                      placeholder="Enter Your Company UIN"
-                                    />
-                                  </div>
-                                </Col>
-
-                                <Col lg="6">
-                                  <div className="mb-3">
-                                    <Label for="basicpill-declaration-input10">
-                                      Declaration
-                                    </Label>
-                                    <Input
-                                      type="text"
-                                      className="form-control"
-                                      id="basicpill-Declaration-input10"
-                                      placeholder="Declaration Details"
-                                    />
-                                  </div>
-                                </Col>
-                              </Row>
-                            </Form>
-                          </div>
+                          <SummaryQA />
                         </TabPane>
                         <TabPane tabId={3}>
                           <div>
-                            <Form>
-                              <Row>
-                                <Col lg="6">
-                                  <div className="mb-3">
-                                    <Label for="basicpill-namecard-input11">
-                                      Name on Card
-                                    </Label>
-                                    <Input
-                                      type="text"
-                                      className="form-control"
-                                      id="basicpill-namecard-input11"
-                                      placeholder="Enter Your Name on Card"
-                                    />
-                                  </div>
-                                </Col>
-
-                                <Col lg="6">
-                                  <div className="mb-3">
-                                    <Label>Credit Card Type</Label>
-                                    <select className="form-select">
-                                      <option defaultValue>
-                                        Select Card Type
-                                      </option>
-                                      <option value="AE">
-                                        American Express
-                                      </option>
-                                      <option value="VI">Visa</option>
-                                      <option value="MC">MasterCard</option>
-                                      <option value="DI">Discover</option>
-                                    </select>
-                                  </div>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col lg="6">
-                                  <div className="mb-3">
-                                    <Label for="basicpill-cardno-input12">
-                                      Credit Card Number
-                                    </Label>
-                                    <Input
-                                      type="text"
-                                      className="form-control"
-                                      id="basicpill-cardno-input12"
-                                      placeholder="Credit Card Number"
-                                    />
-                                  </div>
-                                </Col>
-
-                                <Col lg="6">
-                                  <div className="mb-3">
-                                    <Label for="basicpill-card-verification-input0">
-                                      Card Verification Number
-                                    </Label>
-                                    <Input
-                                      type="text"
-                                      className="form-control"
-                                      id="basicpill-card-verification-input0"
-                                      placeholder="Credit Verification Number"
-                                    />
-                                  </div>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col lg="6">
-                                  <div className="mb-3">
-                                    <Label for="basicpill-expiration-input13">
-                                      Expiration Date
-                                    </Label>
-                                    <Input
-                                      type="text"
-                                      className="form-control"
-                                      id="basicpill-expiration-input13"
-                                      placeholder="Card Expiration Date"
-                                    />
-                                  </div>
-                                </Col>
-                              </Row>
-                            </Form>
+                            <GeneratedChecklist />
                           </div>
                         </TabPane>
                         <TabPane tabId={4}>
-                          <div className="row justify-content-center">
+                          <div
+                            ref={contentRef}
+                            className="row justify-content-center"
+                          >
                             <Col lg="6">
+                              <BuildingPermitPrintable />
                               <div className="text-center">
                                 <div className="mb-4">
                                   <i className="mdi mdi-check-circle-outline text-success display-4" />
@@ -391,6 +175,10 @@ const FormWizard = () => {
                                 </div>
                               </div>
                             </Col>
+                          </div>
+                          <div>
+                            <button onClick={reactToPrintFn}>Print</button>
+                            <div>Content to print</div>
                           </div>
                         </TabPane>
                       </TabContent>

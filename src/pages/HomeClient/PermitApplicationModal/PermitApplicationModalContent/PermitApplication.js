@@ -24,18 +24,16 @@ import CustomSwitch from "pages/HomeClient/Components/CustomSwitch";
 
 const style = { backgroundColor: "#55a5e6", color: "white" };
 
-export default function PermitApplicationModalContent({
-  setmodal_backdrop,
-  values,
-  googleRef,
-}) {
+export default function PermitApplication() {
   // const { values } = useFormikContext();
   ///////////////////////////
   const [filterParams, setFilterParams] = useState([]);
 
-  const showScopeOfWork = values.addInfoworkScopeChecklist.some(
-    (item) => item.label === "Interior Renovation"
-  );
+  const showScopeOfWork = false;
+
+  // const showScopeOfWork = values.addInfoworkScopeChecklist.some(
+  //   (item) => item.label === "Interior Renovation"
+  // );
 
   ///////////////////
   const [ownershipOptions, setOwnershipOptions] = useState([]);
@@ -127,7 +125,7 @@ export default function PermitApplicationModalContent({
                     </Col>
                   </Row>
                   {/* {console.log(values.ownershipStatus === "3")} */}
-                  {values.landOwnershipStatus === "3" && (
+                  {/* {values.landOwnershipStatus === "3" && (
                     <Row className="mb-3">
                       <Col md="12">
                         <CustomSelect
@@ -137,7 +135,7 @@ export default function PermitApplicationModalContent({
                         />
                       </Col>
                     </Row>
-                  )}
+                  )} */}
 
                   <Row className="mb-3">
                     <Col md="12">
@@ -351,7 +349,7 @@ export default function PermitApplicationModalContent({
                   label="Add authorized representative."
                   name="authorizedSwitch"
                 />
-                {values.authorizedSwitch && (
+                {/* {values.authorizedSwitch && (
                   <CardText>
                     <Row className="mb-3">
                       <Col md="5">
@@ -435,7 +433,7 @@ export default function PermitApplicationModalContent({
                       </Col>
                     </Row>
                   </CardText>
-                )}
+                )} */}
               </CardBody>
             </Card>
             <Card
@@ -530,7 +528,7 @@ export default function PermitApplicationModalContent({
                               />
                             </Row>
 
-                            {values.addInfoInteriorRenovationMall == "yes" && (
+                            {/* {values.addInfoInteriorRenovationMall == "yes" && (
                               <Row className="mb-3">
                                 <Col>
                                   <CustomSelect
@@ -558,7 +556,7 @@ export default function PermitApplicationModalContent({
                                   />
                                 </Col>
                               </Row>
-                            )}
+                            )} */}
                           </Row>
                         </div>
                       </Col>

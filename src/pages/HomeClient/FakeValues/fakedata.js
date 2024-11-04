@@ -50,6 +50,12 @@ const workScopeCheckistFD = [
   { id: 15, label: "As-Built" },
 ];
 
+const leasedSpace = [
+  { id: 1, label: "SM Butuan" },
+  { id: 2, label: "Robinsons Butuan" },
+  { id: 3, label: "Gaisano Butuan" },
+];
+
 const followUpQuestionsFD = [
   { id: 1, label: "Without any electrical installation or alteration" },
   {
@@ -265,4 +271,6 @@ export {
   followUpQuestionsFD,
   buildingPermitAppicationQuestions,
   barangayFD,
+  characterOrOccupancy,
+  leasedSpace,
 };

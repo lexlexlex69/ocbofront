@@ -9,7 +9,6 @@ export default function CustomTable({ children }) {
           <Table className="table table-striped mb-0 table-bordered">
             <thead className="table-light">
               <tr>
-                <th>#</th>
                 <th style={{ textAlign: "center" }}>Questions</th>
                 <th style={{ textAlign: "center" }}>Answers</th>
               </tr>

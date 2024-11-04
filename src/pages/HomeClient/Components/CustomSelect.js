@@ -18,7 +18,7 @@ const CustomSelect = ({ label, ...props }) => {
       values.landOwnershipStatus !== "3"
     ) {
       setFieldValue("landOwnershipMethod", "0");
-      console.log("sdfsdf");
+      // console.log("sdfsdf");
     }
   }, [
     values.landOwnershipStatus,
@@ -26,7 +26,7 @@ const CustomSelect = ({ label, ...props }) => {
     field.name,
     setFieldValue,
   ]);
-  console.log(values);
+  console.table(values);
   // console.log(values)
 
   return (

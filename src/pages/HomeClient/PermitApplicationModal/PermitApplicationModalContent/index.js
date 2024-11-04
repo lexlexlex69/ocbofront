@@ -11,6 +11,7 @@ import {
   followUpQuestionsFD,
   buildingPermitAppicationQuestions,
   barangayFD,
+  leasedSpace,
 } from "pages/HomeClient/FakeValues/fakedata";
 import { Field, Form, Formik, useFormikContext } from "formik";
 import CustomSelect from "pages/HomeClient/Components/CustomSelect";
@@ -364,7 +365,7 @@ export default function PermitApplicationModalContent({
                   <CustomSelect
                     label="Type of Activity"
                     name="AddInfoTypeActivity"
-                    options={ownershipOptions}
+                    options={workScopeCheckistFD}
                   />
                 </Col>
               </Row>
@@ -442,7 +443,7 @@ export default function PermitApplicationModalContent({
                               <CustomSelect
                                 label="For Interior Renovation (Leased Space)"
                                 name="addInfoInteriorLeasedSpace"
-                                options={ownershipOptions}
+                                options={leasedSpace}
                               />
                             </Col>
                           </Row>

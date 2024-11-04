@@ -6,14 +6,14 @@ import { generatedChecklistFD } from "pages/HomeClient/FakeValues/generatedCheck
 export default function GeneratedChecklist() {
   return (
     <>
-      <div>
-        <Row>
+      <div className="GeneratedChecklist">
+        <div className=" Printable-container">
           {generatedChecklistFD.map((list) => (
-            <Col md="4" key={list.id}>
+            <div className="" key={list.id}>
               <GeneratedChecklistCard title={list.title} data={list.data} />
-            </Col>
+            </div>
           ))}
-        </Row>
+        </div>
       </div>
     </>
   );

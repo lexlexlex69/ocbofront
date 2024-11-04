@@ -7,6 +7,11 @@ import "./i18n";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
+import "./assets/css/GeneratedChecklistCard.css";
+import "./assets/css/BuildingPermitPrintable.css";
+import "./assets/css/GeneratedChecklist.css";
+import "./assets/css/CustomTableSummary.css";
+import "./assets/css/DefaultStyle.css";
 
 import { store } from "./app/store";
 

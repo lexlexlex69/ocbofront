@@ -1,10 +1,32 @@
 import { useField, useFormikContext } from "formik";
 import { Label } from "reactstrap";
-import React from "react";
+import React, { useEffect } from "react";
 const CustomSelect = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   const errorStyle = { border: "1px solid #f46a6a" };
   const { values } = useFormikContext();
+  const { setFieldValue } = useFormikContext();
+  useEffect(() => {
+    if (
+      field.name === "landOwnershipForm" &&
+      values.landOwnershipStatus === "2"
+    ) {
+      setFieldValue("landOwnershipForm", "2");
+    }
+    if (
+      field.name === "landOwnershipForm" &&
+      values.landOwnershipStatus !== "3"
+    ) {
+      setFieldValue("landOwnershipMethod", "0");
+      console.log("sdfsdf");
+    }
+  }, [
+    values.landOwnershipStatus,
+    values.landOwnershipMethod,
+    field.name,
+    setFieldValue,
+  ]);
+  console.log(values);
   // console.log(values)
 
   return (

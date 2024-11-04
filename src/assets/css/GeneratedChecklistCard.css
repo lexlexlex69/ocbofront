@@ -1,0 +1,14 @@
+.GeneratedChecklistCard {
+  border: 1px solid black;
+  min-width: none;
+  color: black;
+}
+.GeneratedChecklistCard p {
+  border-bottom: 1px solid black;
+  font-weight: 700;
+  text-align: center;
+}
+
+.GeneratedChecklistCard div {
+  padding: 5px 15px;
+}

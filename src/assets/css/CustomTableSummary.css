@@ -1,0 +1,11 @@
+.CustomTable td {
+  max-width: 500px;
+  min-width: 400px;
+}
+.CustomTable span {
+  display: flex;
+  gap: 0.1rem;
+}
+.CustomTable p {
+  margin: 0px;
+}

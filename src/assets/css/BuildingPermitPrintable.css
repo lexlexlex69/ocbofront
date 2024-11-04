@@ -1,0 +1,49 @@
+.BuildingPermitPrintable {
+  padding: 10px 100px;
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid gray;
+  color: black;
+}
+.BuildingPermitPrintable p {
+  margin: 0px;
+}
+
+.BuildingPermitPrintable img {
+  width: 10%;
+  height: 10%;
+}
+.BuildingPermitPrintable header {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.BuildingPermitPrintable nav span {
+  display: flex;
+  justify-content: space-between;
+}
+.BuildingPermitPrintable .container-container {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* background-color: rgb(177, 177, 238); */
+}
+.Printable-container {
+  width: auto;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.BuildingPermitPrintable td,
+.BuildingPermitPrintable th {
+  font-size: 0.7rem;
+  padding: 0px;
+}
+.BuildingPermitPrintable footer,
+.BuildingPermitPrintable .questionsAnswers {
+  text-align: center;
+}

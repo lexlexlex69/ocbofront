@@ -163,19 +163,16 @@ const FormWizard = () => {
                                 </div>
                               </TabPane>
                               <TabPane tabId={4}>
-                                <div
-                                  ref={contentRef}
-                                  className="row justify-content-center"
-                                >
+                                <div className="row justify-content-center">
                                   <Col lg="12">
-                                    <BuildingPermitPrintable />
+                                    <BuildingPermitPrintable values={values} />
                                   </Col>
                                 </div>
                                 <div>
                                   <button onClick={reactToPrintFn}>
                                     Print
                                   </button>
-                                  <div>Content to print</div>
+                                  <div ref={contentRef}>Content to print</div>
                                 </div>
                               </TabPane>
                             </TabContent>

@@ -3,15 +3,19 @@ import { questionsLabels } from "pages/HomeClient/utils/initialValues";
 import CustomTable from "./CustomTable";
 import {
   barangayFD,
+  characterOrOccupancyFD,
   formOwnershipFD,
   leasedSpace,
   methodAcquisitionFD,
   ownershipFD,
   workScopeCheckistFD,
 } from "pages/HomeClient/FakeValues/fakedata";
-import selectValuesDisplay from "./SelectValuesDisplay";
+import selectValuesDisplay, {
+  selectValuesDisplayVer2,
+} from "../../utils/SelectValuesDisplay";
 
 export default function SummaryQA({ values }) {
+  console.log(values);
   // console.log(useFormikContext);
   // console.log(values.landOwnershipStatus);
   const fetchstoredValues = values;
@@ -264,15 +268,29 @@ export default function SummaryQA({ values }) {
             )}
           </>
         )}
+        <tr>
+          <td>{"Use of Character or Occupancy"}.</td>
+          <td>
+            <div style={{ display: "flex" }}>
+              <p>
+                {selectValuesDisplayVer2(
+                  characterOrOccupancyFD,
+                  values.addInfoCharacterOccupancy
+                )}
+              </p>
+              <p>{`(${values.addInfoCharacterOccupancyFollowUp})`}</p>
+            </div>
+          </td>
+        </tr>
 
         <tr>
           <td>{"Follow-up Questions"}.</td>
           <td>
             {
               <span style={{ display: "block" }}>
-                {values.addInfoFollowUpQuestions.map((val) => (
+                {values.addInfoFollowUpQuestions.map((val, indx) => (
                   <p style={{ marginBottom: "10px" }} key={val.id}>
-                    {val.label}
+                    {`${indx + 1}. ${val.label}.`}
                   </p>
                 ))}
               </span>

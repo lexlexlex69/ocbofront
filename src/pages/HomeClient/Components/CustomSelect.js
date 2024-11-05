@@ -26,7 +26,7 @@ const CustomSelect = ({ label, ...props }) => {
     field.name,
     setFieldValue,
   ]);
-  console.table(values);
+  // console.table(values);
   // console.log(values)
 
   return (
@@ -64,7 +64,9 @@ const CustomSelect = ({ label, ...props }) => {
         {props.options &&
           props.options.map((option, index) => (
             <option key={index} value={option.id}>
-              {option.label}
+              {field.name === "addInfoCharacterOccupancy"
+                ? `${option.label}: ${option.description}`
+                : option.label}
             </option>
           ))}
       </select>

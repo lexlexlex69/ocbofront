@@ -46,6 +46,7 @@ const initialValuesBuildingApp = {
   addInfoInteriorBuildingNo: "",
   addInfoInteriorDate: todayDate,
   addInfoCharacterOccupancy: "",
+  addInfoCharacterOccupancyFollowUp: "",
   addInfoFollowUpQuestions: [],
 };
 

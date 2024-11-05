@@ -91,11 +91,11 @@ const followUpQuestionsFD = [
   { id: 13, label: "The structure is less than 3-storey" },
 ];
 
-const characterOrOccupancy = [
+const characterOrOccupancyFD = [
   {
     id: 1,
     label: "GROUP A",
-    desciption: "RESIDENTIAL (DWELLINGS)",
+    description: "RESIDENTIAL (DWELLINGS)",
     choices: [
       { id: 1, label: "SINGLE" },
       { id: 2, label: "DUPLEX" },
@@ -105,7 +105,7 @@ const characterOrOccupancy = [
   {
     id: 2,
     label: "GROUP B",
-    desciption: "RESIDENTIAL",
+    description: "RESIDENTIAL",
     choices: [
       { id: 1, label: "HOTEL" },
       { id: 2, label: "MOTEL" },
@@ -118,7 +118,7 @@ const characterOrOccupancy = [
   {
     id: 3,
     label: "GROUP C",
-    desciption: "EDUCATIONAL & RECREATIONAL",
+    description: "EDUCATIONAL & RECREATIONAL",
     choices: [
       { id: 1, label: "SCHOOL BUILDING" },
       { id: 2, label: "SCHOOL AUDITORIUM, GYMNASIUM" },
@@ -130,7 +130,7 @@ const characterOrOccupancy = [
   {
     id: 4,
     label: "GROUP D",
-    desciption: "INSTITUTIONAL",
+    description: "INSTITUTIONAL",
     choices: [
       { id: 1, label: "HOSPITAL OR SIMIAL STRUCTURE" },
       { id: 2, label: "HOME FOR THE AGED" },
@@ -140,7 +140,7 @@ const characterOrOccupancy = [
   {
     id: 5,
     label: "GROUP E",
-    desciption: "COMMERCIAL",
+    description: "COMMERCIAL",
     choices: [
       { id: 1, label: "BANK" },
       { id: 2, label: "STORE" },
@@ -152,7 +152,7 @@ const characterOrOccupancy = [
   {
     id: 6,
     label: "GROUP F",
-    desciption: "LIGHT INDUSTRIAL",
+    description: "LIGHT INDUSTRIAL",
     choices: [
       {
         id: 1,
@@ -164,7 +164,7 @@ const characterOrOccupancy = [
   {
     id: 7,
     label: "GROUP G",
-    desciption: "MEDIUM INDUSTRIAL",
+    description: "MEDIUM INDUSTRIAL",
     choices: [
       {
         id: 1,
@@ -271,6 +271,6 @@ export {
   followUpQuestionsFD,
   buildingPermitAppicationQuestions,
   barangayFD,
-  characterOrOccupancy,
+  characterOrOccupancyFD,
   leasedSpace,
 };

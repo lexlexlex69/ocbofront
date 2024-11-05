@@ -12,6 +12,7 @@ import {
   buildingPermitAppicationQuestions,
   barangayFD,
   leasedSpace,
+  characterOrOccupancyFD,
 } from "pages/HomeClient/FakeValues/fakedata";
 import { Field, Form, Formik, useFormikContext } from "formik";
 import CustomSelect from "pages/HomeClient/Components/CustomSelect";
@@ -23,6 +24,10 @@ import CustomDate from "pages/HomeClient/Components/CustomDate";
 import moment from "moment";
 import CustomSwitch from "pages/HomeClient/Components/CustomSwitch";
 import CustomCard from "../component/CustomCard";
+import CustomRadioButtonVer2 from "pages/HomeClient/Components/CustomRadioButtonVer2";
+import selectValuesDisplay, {
+  selectValuesDisplayVer2,
+} from "pages/HomeClient/utils/SelectValuesDisplay";
 
 const style = { backgroundColor: "#55a5e6", color: "white" };
 
@@ -477,10 +482,25 @@ export default function PermitApplicationModalContent({
                   <CustomSelect
                     label="Use of Character or Occupancy"
                     name="addInfoCharacterOccupancy"
-                    options={ownershipOptions}
+                    options={characterOrOccupancyFD}
                   />
                 </Col>
               </Row>
+              {values.addInfoCharacterOccupancy && (
+                <Row>
+                  <Col md="12">
+                    <CustomRadioButtonVer2
+                      label={selectValuesDisplayVer2(
+                        characterOrOccupancyFD,
+                        values.addInfoCharacterOccupancy
+                      )}
+                      name="addInfoCharacterOccupancyFollowUp"
+                      choices={characterOrOccupancyFD}
+                      selectedId={values.addInfoCharacterOccupancy}
+                    />
+                  </Col>
+                </Row>
+              )}
               <Row className="mb-3">
                 <div>
                   <Col md="12">

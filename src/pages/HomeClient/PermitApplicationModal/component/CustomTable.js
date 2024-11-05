@@ -5,7 +5,10 @@ export default function CustomTable({ children }) {
   return (
     <Row style={{ padding: "0px" }}>
       <Col style={{ padding: "0px" }}>
-        <div className="table-responsive">
+        <div
+          className="table-responsive"
+          style={{ height: "auto", overflowY: "clip" }}
+        >
           <Table className="table table-striped mb-0 table-bordered">
             <thead className="table-light">
               <tr>

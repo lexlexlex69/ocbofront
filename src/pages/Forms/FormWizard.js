@@ -32,7 +32,9 @@ import BuildingPermitPrintable from "pages/HomeClient/PermitApplicationModal/com
 const FormWizard = () => {
   const parentRef = useRef();
   const contentRef = useRef();
-  const reactToPrintFn = useReactToPrint({ contentRef });
+  const reactToPrintFn = useReactToPrint({
+    content: () => contentRef.current,
+  });
   //meta title
   document.title = "Form Wizard | Skote - React Admin & Dashboard Template";
 
@@ -167,12 +169,17 @@ const FormWizard = () => {
                                   <Col lg="12">
                                     <BuildingPermitPrintable values={values} />
                                   </Col>
-                                </div>
-                                <div>
-                                  <button onClick={reactToPrintFn}>
-                                    Print
-                                  </button>
-                                  <div ref={contentRef}>Content to print</div>
+                                  <div>
+                                    <div ref={contentRef}>Content to print</div>
+                                    <button
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        reactToPrintFn();
+                                      }}
+                                    >
+                                      Print
+                                    </button>
+                                  </div>
                                 </div>
                               </TabPane>
                             </TabContent>

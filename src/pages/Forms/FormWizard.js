@@ -187,41 +187,47 @@ const FormWizard = () => {
                         )}
                       </Formik>
                     </div>
-                    <div className="actions clearfix">
-                      <ul>
-                        <li
-                          className={
-                            activeTab === 1 ? "previous disabled" : "previous"
-                          }
-                        >
-                          <Link
-                            to="#"
-                            onClick={() => {
-                              toggleTab(activeTab - 1);
-                              // parentRef.current.scrollIntoView({
-                              //   behavior: "smooth",
-                              // });
-                            }}
-                          >
-                            Previous
-                          </Link>
-                        </li>
-                        <li
-                          className={activeTab === 4 ? "next disabled" : "next"}
-                        >
-                          <Link
-                            to="#"
-                            onClick={() => {
-                              toggleTab(activeTab + 1);
-                              // parentRef.current.scrollIntoView({
-                              //   behavior: "smooth",
-                              // });
-                            }}
-                          >
-                            Next
-                          </Link>
-                        </li>
-                      </ul>
+
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      {/* className={
+                          activeTab === 1 ? "previous disabled" : "previous"
+                        } */}
+
+                      <button
+                        to="#"
+                        onClick={() => {
+                          toggleTab(activeTab - 1);
+                          // parentRef.current.scrollIntoView({
+                          //   behavior: "smooth",
+                          // });
+                        }}
+                        style={{ width: "49%" }}
+                        disabled={activeTab === 1}
+                      >
+                        Previous
+                      </button>
+
+                      {/* className={activeTab === 4 ? "next disabled" : "next"}
+                      style={{ width: "49%", backgroundColor: "blue" }} */}
+
+                      <button
+                        to="#"
+                        onClick={() => {
+                          toggleTab(activeTab + 1);
+                          // parentRef.current.scrollIntoView({
+                          //   behavior: "smooth",
+                          // });
+                        }}
+                        disabled={activeTab === 4}
+                        style={{ width: "49%" }}
+                      >
+                        Next
+                      </button>
                     </div>
                   </div>
                 </CardBody>

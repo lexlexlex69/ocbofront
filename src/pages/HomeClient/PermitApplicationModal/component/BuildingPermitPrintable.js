@@ -52,7 +52,7 @@ export default function BuildingPermitPrintable({ values }) {
 
           <p className="questionsAnswers">Questions and Answers Summary</p>
           <div>
-            <table>
+            <table style={{ width: "100%" }} className="CustomTable">
               <SummaryQAContent values={values} />
             </table>
           </div>

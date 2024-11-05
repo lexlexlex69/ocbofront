@@ -1,11 +1,35 @@
-.CustomTable td {
+/* .CustomTable td {
   max-width: 500px;
   min-width: 400px;
-}
+} */
 .CustomTable span {
   display: flex;
   gap: 0.1rem;
 }
 .CustomTable p {
   margin: 0px;
+}
+
+.CustomTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.CustomTable th,
+.table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  /* text-wrap: wrap; */
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.CustomTable th:first-child,
+.CustomTable td:first-child {
+  width: 40%;
+}
+
+.CustomTable th:last-child,
+.CustomTable td:last-child {
+  width: 60%;
 }

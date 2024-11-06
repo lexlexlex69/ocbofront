@@ -2,11 +2,11 @@ import React, { useRef } from "react";
 
 import { generatedChecklistFD } from "pages/HomeClient/FakeValues/generatedChecklist";
 import GeneratedChecklistCard from "./GeneratedChecklistCard";
-import { questionsLabels } from "pages/HomeClient/utils/initialValues";
+import { questionsLabels } from "utils/initialValues";
 import { storedValues } from "pages/HomeClient/FakeValues/storedDataFD";
 import selectValuesDisplay, {
   selectValuesDisplayVer2,
-} from "pages/HomeClient/utils/SelectValuesDisplay";
+} from "utils/SelectValuesDisplay";
 import {
   characterOrOccupancyFD,
   formOwnershipFD,

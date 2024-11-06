@@ -15,19 +15,19 @@ import {
   characterOrOccupancyFD,
 } from "pages/HomeClient/FakeValues/fakedata";
 import { Field, Form, Formik, useFormikContext } from "formik";
-import CustomSelect from "pages/HomeClient/Components/CustomSelect";
-import CustomInput from "pages/HomeClient/Components/CustomInput";
-import CustomCheckbox from "pages/HomeClient/Components/CustomCheckbox";
-import { initialValuesBuildingApp } from "pages/HomeClient/utils/initialValues";
-import CustomRadioButton from "pages/HomeClient/Components/CustomRadioButton";
-import CustomDate from "pages/HomeClient/Components/CustomDate";
+import CustomSelect from "components/MyCustomComponents/Inputs/CustomSelect";
+import CustomInput from "components/MyCustomComponents/Inputs/CustomInput";
+import CustomCheckbox from "components/MyCustomComponents/Inputs/CustomCheckbox";
+import { initialValuesBuildingApp } from "utils/initialValues";
+import CustomRadioButton from "components/MyCustomComponents/Inputs/CustomRadioButton";
+import CustomDate from "components/MyCustomComponents/Inputs/CustomDate";
 import moment from "moment";
-import CustomSwitch from "pages/HomeClient/Components/CustomSwitch";
+import CustomSwitch from "components/MyCustomComponents/Inputs/CustomSwitch";
 import CustomCard from "../component/CustomCard";
-import CustomRadioButtonVer2 from "pages/HomeClient/Components/CustomRadioButtonVer2";
+import CustomRadioButtonVer2 from "components/MyCustomComponents/Inputs/CustomRadioButtonVer2";
 import selectValuesDisplay, {
   selectValuesDisplayVer2,
-} from "pages/HomeClient/utils/SelectValuesDisplay";
+} from "utils/SelectValuesDisplay";
 
 const style = { backgroundColor: "#55a5e6", color: "white" };
 

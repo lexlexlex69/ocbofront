@@ -23,11 +23,12 @@ import { Link } from "react-router-dom";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { Formik } from "formik";
 import PermitApplicationModalContent from "pages/HomeClient/PermitApplicationModal/PermitApplicationModalContent";
-import { initialValuesBuildingApp } from "pages/HomeClient/utils/initialValues";
+import { initialValuesBuildingApp } from "utils/initialValues";
 import SummaryQA from "pages/HomeClient/PermitApplicationModal/component/SummaryQA";
 import GeneratedChecklist from "pages/HomeClient/PermitApplicationModal/component/GeneratedChecklist";
 import { useReactToPrint } from "react-to-print";
 import BuildingPermitPrintable from "pages/HomeClient/PermitApplicationModal/component/BuildingPermitPrintable";
+import { schemaBuildingPermitChecklist } from "utils/schemas";
 
 const FormWizard = () => {
   const parentRef = useRef();
@@ -76,7 +77,7 @@ const FormWizard = () => {
 
   return (
     <React.Fragment>
-      <div className="page-content">
+      <div className="page-content FormWizardStyle">
         <Container fluid={true}>
           <Breadcrumbs title="Forms" breadcrumbItem="Form Wizard" />
 
@@ -146,7 +147,7 @@ const FormWizard = () => {
                     <div className="content clearfix">
                       <Formik
                         initialValues={initialValuesBuildingApp}
-                        // validationSchema={schema}
+                        validationSchema={schemaBuildingPermitChecklist}
                       >
                         {({ values }) => (
                           <Form>
@@ -170,65 +171,63 @@ const FormWizard = () => {
                                     <BuildingPermitPrintable values={values} />
                                   </Col>
                                   <div>
-                                    <div ref={contentRef}>Content to print</div>
-                                    <button
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        reactToPrintFn();
-                                      }}
-                                    >
+                                    <button onClick={reactToPrintFn}>
                                       Print
                                     </button>
+                                    <div ref={contentRef}>Content to print</div>
                                   </div>
                                 </div>
                               </TabPane>
                             </TabContent>
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                              }}
+                            >
+                              {/* className={
+                          activeTab === 1 ? "previous disabled" : "previous"
+                        } */}
+
+                              <button
+                                to="#"
+                                onClick={() => {
+                                  toggleTab(activeTab - 1);
+                                  // parentRef.current.scrollIntoView({
+                                  //   behavior: "smooth",
+                                  // });
+                                }}
+                                className="btn btn-primary waves-effect waves-light"
+                                style={{ width: "49%" }}
+                                disabled={activeTab === 1}
+                              >
+                                Previous
+                              </button>
+
+                              {/* className={activeTab === 4 ? "next disabled" : "next"}
+                      style={{ width: "49%", backgroundColor: "blue" }} */}
+
+                              <button
+                                to="#"
+                                onClick={() => {
+                                  toggleTab(activeTab + 1);
+                                  // parentRef.current.scrollIntoView({
+                                  //   behavior: "smooth",
+                                  // });
+                                }}
+                                className="btn btn-success waves-effect waves-light"
+                                style={{ width: "49%" }}
+                                disabled={activeTab === 4}
+                              >
+                                Next
+                              </button>
+                            </div>
                           </Form>
                         )}
                       </Formik>
                     </div>
 
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      {/* className={
-                          activeTab === 1 ? "previous disabled" : "previous"
-                        } */}
-
-                      <button
-                        to="#"
-                        onClick={() => {
-                          toggleTab(activeTab - 1);
-                          // parentRef.current.scrollIntoView({
-                          //   behavior: "smooth",
-                          // });
-                        }}
-                        style={{ width: "49%" }}
-                        disabled={activeTab === 1}
-                      >
-                        Previous
-                      </button>
-
-                      {/* className={activeTab === 4 ? "next disabled" : "next"}
-                      style={{ width: "49%", backgroundColor: "blue" }} */}
-
-                      <button
-                        to="#"
-                        onClick={() => {
-                          toggleTab(activeTab + 1);
-                          // parentRef.current.scrollIntoView({
-                          //   behavior: "smooth",
-                          // });
-                        }}
-                        disabled={activeTab === 4}
-                        style={{ width: "49%" }}
-                      >
-                        Next
-                      </button>
-                    </div>
+                    {/* dri ang button gikan */}
                   </div>
                 </CardBody>
               </Card>

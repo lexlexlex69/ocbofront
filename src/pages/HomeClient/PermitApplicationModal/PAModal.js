@@ -2,7 +2,7 @@ import { Modal } from "reactstrap";
 import React, { useEffect, useState, useRef } from "react";
 import PermitApplicationModalContent from "./PermitApplicationModalContent";
 import { Form, Formik, useFormikContext } from "formik";
-import { initialValuesBuildingApp } from "../utils/initialValues";
+import { initialValuesBuildingApp } from "../../../utils/initialValues";
 import SummaryQA from "./component/SummaryQA";
 import QAModal from "./QAModal";
 

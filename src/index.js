@@ -12,6 +12,8 @@ import "./assets/css/BuildingPermitPrintable.css";
 import "./assets/css/GeneratedChecklist.css";
 import "./assets/css/CustomTableSummary.css";
 import "./assets/css/DefaultStyle.css";
+import "./assets/css/FormWizardStyle.css";
+import "./assets/css/HomeCardStyle.css";
 
 import { store } from "./app/store";
 

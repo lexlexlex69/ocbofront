@@ -13,9 +13,9 @@ import {
   workScopeCheckistFD,
 } from "pages/HomeClient/FakeValues/fakedata";
 import { Field, Form, Formik } from "formik";
-import CustomSelect from "pages/HomeClient/Components/CustomSelect";
-import CustomInput from "pages/HomeClient/Components/CustomInput";
-import CustomCheckbox from "pages/HomeClient/Components/CustomCheckbox";
+import CustomSelect from "components/MyCustomComponents/Inputs/CustomSelect";
+import CustomInput from "components/MyCustomComponents/Inputs/CustomInput";
+import CustomCheckbox from "components/MyCustomComponents/Inputs/CustomCheckbox";
 
 const style = { backgroundColor: "#55a5e6", color: "white" };
 

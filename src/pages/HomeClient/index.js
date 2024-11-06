@@ -18,19 +18,12 @@ import {
 } from "reactstrap";
 
 // import images
-import img1 from "../../assets/images/small/img-1.jpg";
-import img2 from "../../assets/images/small/img-2.jpg";
-import img3 from "../../assets/images/small/img-3.jpg";
-import img4 from "../../assets/images/small/img-4.jpg";
-import img5 from "../../assets/images/small/img-5.jpg";
-import img6 from "../../assets/images/small/img-6.jpg";
-import Background from "./assets/images/cityhall.jpg";
-import { Link } from "react-router-dom";
 
 //Import Breadcrumb
-import Breadcrumbs from "../../components/Common/Breadcrumb";
-import HomeCard from "./HomeCard";
-import PAModal from "./PermitApplicationModal/PAModal";
+import HomeCard from "./PermitApplicationModal/component/HomeCard";
+import { homeCardObj } from "../../utils/objectForComponents";
+
+//my imports
 
 const HomeClient = () => {
   //meta title
@@ -66,29 +59,20 @@ const HomeClient = () => {
         <Container fluid={true}>
           <Row>
             <Col className="col-12 mb-4">
-              <p className="my-3" style={{ textAlign: "center" }}>
+              <h2 className="my-3" style={{ textAlign: "center" }}>
                 Available Services
-              </p>
+              </h2>
               {/* <Breadcrumbs title="test" breadcrumbItem="test2" /> */}
               <CardDeck className="card-deck-wrapper">
                 <div className="card-group" style={{ gap: "10px" }}>
-                  <HomeCard type="application" title="Permit Application" />
-                  <HomeCard type="checklist" title="Checklist Generator" />
-                </div>
-              </CardDeck>
-            </Col>
-          </Row>
-          <Row>
-            <Col className="col-12 mb-4">
-              <p className="my-3" style={{ textAlign: "center" }}>
-                Available Services
-              </p>
-              {/* <Breadcrumbs title="test" breadcrumbItem="test2" /> */}
-              <CardDeck className="card-deck-wrapper">
-                <div className="card-group" style={{ gap: "10px" }}>
-                  <HomeCard type="application" title="Permit Application" />
-
-                  <HomeCard type="checklist" title="Checklist Generator" />
+                  {homeCardObj.map((item) => (
+                    <HomeCard
+                      key={item.id}
+                      title={item.title}
+                      imageUrl={item.imageUrl}
+                      buttons={item.buttons}
+                    />
+                  ))}
                 </div>
               </CardDeck>
             </Col>

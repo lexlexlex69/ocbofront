@@ -1,5 +1,5 @@
 import React from "react";
-import { questionsLabels } from "pages/HomeClient/utils/initialValues";
+import { questionsLabels } from "utils/initialValues";
 import CustomTable from "./CustomTable";
 import {
   barangayFD,
@@ -12,7 +12,7 @@ import {
 } from "pages/HomeClient/FakeValues/fakedata";
 import selectValuesDisplay, {
   selectValuesDisplayVer2,
-} from "../../utils/SelectValuesDisplay";
+} from "../../../../utils/SelectValuesDisplay";
 import SummaryQAContent from "./SummaryQAContent";
 
 export default function SummaryQA({ values }) {

@@ -123,6 +123,11 @@ const publicRoutes = [
   { path: "/not-found", component: Pages404 },
 ];
 const testRoutes = [
+  {
+    path: "/permit-checklist/building-permit-checklist",
+    component: FormWizard,
+  },
+
   { path: "/FormWizard1", component: FormWizard },
   { path: "/BasicTable", component: BasicTable },
   // { path: "/FormikContent", component: FormikContent },

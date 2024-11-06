@@ -1,6 +1,6 @@
 import { Card, CardBody, CardText, Col, Row, Table } from "reactstrap";
 import React from "react";
-import { questionsLabels } from "pages/HomeClient/utils/initialValues";
+import { questionsLabels } from "utils/initialValues";
 import { storedValues } from "pages/HomeClient/FakeValues/storedDataFD";
 
 export default function SummaryQA({ values }) {

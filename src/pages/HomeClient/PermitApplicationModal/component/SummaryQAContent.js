@@ -9,7 +9,7 @@ import {
 } from "pages/HomeClient/FakeValues/fakedata";
 import selectValuesDisplay, {
   selectValuesDisplayVer2,
-} from "pages/HomeClient/utils/SelectValuesDisplay";
+} from "utils/SelectValuesDisplay";
 import React from "react";
 
 export default function SummaryQAContent({ values }) {

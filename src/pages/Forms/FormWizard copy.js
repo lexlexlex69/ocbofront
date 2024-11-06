@@ -23,7 +23,7 @@ import { Link } from "react-router-dom";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 import { Formik } from "formik";
 import PermitApplicationModalContent from "pages/HomeClient/PermitApplicationModal/PermitApplicationModalContent";
-import { initialValuesBuildingApp } from "pages/HomeClient/utils/initialValues";
+import { initialValuesBuildingApp } from "utils/initialValues";
 import SummaryQA from "pages/HomeClient/PermitApplicationModal/component/SummaryQA";
 import GeneratedChecklist from "pages/HomeClient/PermitApplicationModal/component/GeneratedChecklist";
 import { useReactToPrint } from "react-to-print";

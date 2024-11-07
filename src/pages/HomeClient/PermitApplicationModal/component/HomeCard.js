@@ -36,18 +36,36 @@ export default function HomeCard({ title, buttons, imageUrl }) {
           This is a longer card with supporting text below as a natural lead-in
           to additional content. This content is a little bit longer.
         </CardText>
-        <CardText>
-          <Row>
+        <CardText
+          style={{
+            height: "inherit",
+            alignItems: "stretch",
+          }}
+        >
+          {/* <div className="HomeCardStyleContainer"> */}
+          <Row
+            style={{
+              height: "100%",
+              alignItems: "stretch",
+            }}
+          >
             {buttons?.map((item) => (
-              <NavLink
-                className="btn btn-success waves-effect waves-light"
+              <Col
                 key={item.id}
-                to={item.url}
+                lg="12"
+                xl="6"
+                style={{ height: "inherit", alignItems: "stretch" }}
               >
-                {item.title}
-              </NavLink>
+                <NavLink
+                  className="btn btn-success waves-effect waves-light"
+                  to={item.url}
+                >
+                  {item.title}
+                </NavLink>
+              </Col>
             ))}
           </Row>
+          {/* </div> */}
         </CardText>
       </CardBody>
     </Card>

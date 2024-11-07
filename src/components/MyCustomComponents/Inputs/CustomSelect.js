@@ -9,20 +9,20 @@ const CustomSelect = ({ label, ...props }) => {
   useEffect(() => {
     if (
       field.name === "landOwnershipForm" &&
-      values.landOwnershipStatus === "2"
+      values?.landOwnershipStatus === "2"
     ) {
       setFieldValue("landOwnershipForm", "2");
     }
     if (
       field.name === "landOwnershipForm" &&
-      values.landOwnershipStatus !== "3"
+      values?.landOwnershipStatus !== "3"
     ) {
       setFieldValue("landOwnershipMethod", "0");
       // console.log("sdfsdf");
     }
   }, [
-    values.landOwnershipStatus,
-    values.landOwnershipMethod,
+    values?.landOwnershipStatus,
+    values?.landOwnershipMethod,
     field.name,
     setFieldValue,
   ]);
@@ -32,7 +32,10 @@ const CustomSelect = ({ label, ...props }) => {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Label style={{ marginBottom: "3px" }}>{label}:</Label>{" "}
+        {!(
+          field.name.includes("applicantAdd") ||
+          field.name.includes("authorizeAdd")
+        ) && <Label style={{ marginBottom: "3px" }}>{label}:</Label>}
         {meta.touched && meta.error && (
           <p style={{ marginBottom: "0", color: "#f46a6a" }}>*{meta.error}</p>
         )}
@@ -44,13 +47,13 @@ const CustomSelect = ({ label, ...props }) => {
         {...props}
         style={meta.touched && meta.error ? errorStyle : {}}
         value={
-          values.landOwnershipStatus === "2" &&
+          values?.landOwnershipStatus === "2" &&
           field.name === "landOwnershipForm"
             ? "2"
             : field.value
         }
         disabled={
-          values.landOwnershipStatus === "2" &&
+          values?.landOwnershipStatus === "2" &&
           field.name === "landOwnershipForm"
             ? true
             : false
@@ -58,7 +61,7 @@ const CustomSelect = ({ label, ...props }) => {
         // defaultValue={"asd"}
         // value={"zxc"}
       >
-        <option value="qwe" hidden>{`Select a ${label}`}</option>
+        <option value="qwe" hidden>{`Select ${label}`}</option>
         {/* <option value="asd">{`Select a asdf`}</option>
         <option value="zxc">{`Select a xzcv`}</option> */}
         {props.options &&

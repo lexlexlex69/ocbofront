@@ -3,7 +3,7 @@ export const homeCardObj = [
   {
     id: 1,
     title: "Permit Application",
-    imageUrl: { application },
+    imageUrl: application,
     description:
       "This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
     buttons: [
@@ -22,7 +22,7 @@ export const homeCardObj = [
   {
     id: 2,
     title: "Checklist Generator",
-    imageUrl: { checklist },
+    imageUrl: checklist,
     description:
       "This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
     buttons: [

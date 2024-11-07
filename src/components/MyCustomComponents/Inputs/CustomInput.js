@@ -19,7 +19,10 @@ const CustomInput = ({ label, ...props }) => {
           justifyContent: "space-between",
         }}
       >
-        <Label style={{ marginBottom: "3px" }}>{label}:</Label>{" "}
+        {!(
+          field.name.includes("applicantAdd") ||
+          field.name.includes("authorizeAdd")
+        ) && <Label style={{ marginBottom: "3px" }}>{label}:</Label>}
         {meta.touched && meta.error && (
           <p style={{ marginBottom: "0", color: "#f46a6a" }}>{meta.error}</p>
         )}
@@ -27,7 +30,7 @@ const CustomInput = ({ label, ...props }) => {
       <Input
         {...field}
         {...props}
-        placeholder={`Enter a ${label}`}
+        placeholder={`Enter ${label}`}
         className={meta.touched && meta.error ? "border-danger" : ""}
       />
     </>

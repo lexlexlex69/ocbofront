@@ -86,6 +86,7 @@ const Header = (props) => {
                 style={{
                   display: "flex",
                   alignItems: "center",
+                  gap: "10px",
                 }}
               >
                 {/* <span className="logo-sm">
@@ -93,10 +94,14 @@ const Header = (props) => {
                 </span> */}
 
                 <span>
-                  <img src="bxulogo.png" alt="" height="70" />
+                  <img src="bxulogo2.png" alt="" height="50" />
                 </span>
                 <h4
-                  style={{ fontWeight: "500", fontFamily: "Libre Baskerville" }}
+                  style={{
+                    fontWeight: "500",
+                    fontFamily: "Libre Baskerville",
+                    margin: "0px",
+                  }}
                 >
                   City Building Manangement Department
                 </h4>

@@ -1,4 +1,14 @@
 .HomeCardStyle {
 }
-.HomeCardStyle .HomeCardButton {
+.HomeCardStyle .HomeCardStyleContainer {
+  display: flex;
+  gap: 10px;
+}
+.HomeCardStyle a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 2rem;
 }

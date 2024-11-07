@@ -59,6 +59,9 @@ import FormElements from "pages/Forms/FormElements";
 import FormLayouts from "pages/Forms/FormLayouts";
 import BasicTable from "pages/Tables/BasicTables";
 import PermitApplication from "pages/HomeClient/PermitApplicationModal/PermitApplicationModalContent/PermitApplication";
+import LoginPage from "pages/MyAuth/LoginPage";
+import Register2 from "pages/AuthenticationInner/Register2";
+import RegisterPage from "pages/MyAuth/RegisterPage";
 // import FormikContent from "pages/HomeClient/PermitApplicationModal/PermitApplicationModalContent/FormikContent";
 
 const authProtectedRoutes = [
@@ -122,7 +125,7 @@ const publicRoutes = [
   { path: "/crypto-ico-landing", component: CryptoIcoLanding },
   { path: "/not-found", component: Pages404 },
 ];
-const testRoutes = [
+const AuthTestRoutes1 = [
   {
     path: "/permit-checklist/building-permit-checklist",
     component: FormWizard,
@@ -137,4 +140,13 @@ const testRoutes = [
   { path: "/home", component: HomeClient },
 ];
 
-export { authProtectedRoutes, publicRoutes, testRoutes };
+const PublicTestRoutes1 = [
+  { path: "/mylogin", component: LoginPage },
+  { path: "/myregister", component: RegisterPage },
+];
+export {
+  authProtectedRoutes,
+  publicRoutes,
+  AuthTestRoutes1,
+  PublicTestRoutes1,
+};

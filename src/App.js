@@ -12,7 +12,13 @@ import { notificationSlice } from "features/filters/notificationSlice";
 import { connect } from "react-redux";
 
 // Import Routes all
-import { authProtectedRoutes, publicRoutes, testRoutes } from "./routes";
+import {
+  authProtectedRoutes,
+  AuthTestRoutes,
+  publicRoutes,
+  AuthTestRoutes1,
+  PublicTestRoutes1,
+} from "./routes";
 //sa/sadfsadfsadf
 // Import all middleware
 import Authmiddleware from "./routes/route";
@@ -102,10 +108,20 @@ const App = (props) => {
               exact
             />
           ))}
-          {testRoutes.map((route, idx) => (
+          {AuthTestRoutes1.map((route, idx) => (
             <Authmiddleware
               path={route.path}
               layout={HorizontalLayout}
+              component={route.component}
+              key={idx}
+              isAuthProtected={false}
+              exact
+            />
+          ))}
+          {PublicTestRoutes1.map((route, idx) => (
+            <Authmiddleware
+              path={route.path}
+              layout={NonAuthLayout}
               component={route.component}
               key={idx}
               isAuthProtected={false}

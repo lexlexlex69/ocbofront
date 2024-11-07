@@ -179,54 +179,56 @@ const FormWizard = () => {
                                 </div>
                               </TabPane>
                             </TabContent>
-                            <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                              }}
-                            >
-                              {/* className={
-                          activeTab === 1 ? "previous disabled" : "previous"
-                        } */}
-
-                              <button
-                                to="#"
-                                onClick={() => {
-                                  toggleTab(activeTab - 1);
-                                  // parentRef.current.scrollIntoView({
-                                  //   behavior: "smooth",
-                                  // });
-                                }}
-                                className="btn btn-primary waves-effect waves-light"
-                                style={{ width: "49%" }}
-                                disabled={activeTab === 1}
-                              >
-                                Previous
-                              </button>
-
-                              {/* className={activeTab === 4 ? "next disabled" : "next"}
-                      style={{ width: "49%", backgroundColor: "blue" }} */}
-
-                              <button
-                                to="#"
-                                onClick={() => {
-                                  toggleTab(activeTab + 1);
-                                  // parentRef.current.scrollIntoView({
-                                  //   behavior: "smooth",
-                                  // });
-                                }}
-                                className="btn btn-success waves-effect waves-light"
-                                style={{ width: "49%" }}
-                                disabled={activeTab === 4}
-                              >
-                                Next
-                              </button>
-                            </div>
                           </Form>
                         )}
                       </Formik>
                     </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      {/* className={
+                          activeTab === 1 ? "previous disabled" : "previous"
+                        } */}
 
+                      <button
+                        to="#"
+                        onClick={() => {
+                          toggleTab(activeTab - 1);
+                          // parentRef.current.scrollIntoView({
+                          //   behavior: "smooth",
+                          // });
+                        }}
+                        className="btn btn-primary waves-effect waves-light"
+                        style={{ width: "49%" }}
+                        disabled={activeTab === 1}
+                      >
+                        Previous
+                      </button>
+
+                      {/* className={activeTab === 4 ? "next disabled" : "next"}
+                      style={{ width: "49%", backgroundColor: "blue" }} */}
+
+                      <button
+                        to="#"
+                        onClick={() => {
+                          toggleTab(activeTab + 1);
+                          // parentRef.current.scrollIntoView({
+                          //   behavior: "smooth",
+                          // });
+                        }}
+                        className="btn btn-success waves-effect waves-light"
+                        style={{ width: "49%" }}
+                        // disabled={activeTab === 4}
+                      >
+                        {activeTab === 1 && "Next"}
+                        {activeTab === 2 && "Generate"}
+                        {activeTab === 3 && "Show Printables"}
+                        {activeTab === 4 && "Done"}
+                      </button>
+                    </div>
                     {/* dri ang button gikan */}
                   </div>
                 </CardBody>
